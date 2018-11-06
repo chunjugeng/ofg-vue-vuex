@@ -1,0 +1,54 @@
+// @import '../utils/icon/font-awesome.min.css';
+@import '../utils/icon/font-awesome.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: 'Source Sans Pro','Helvetica Neue',"Microsoft YaHei",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+
+    a {
+        text-decoration: none;
+        cursor: pointer;
+    }
+    ul, li {
+        list-style-type: none;
+    }
+}
+
+input, button, select, option{
+    outline: none;
+}
+p, a, span, ul, li, ol, strong, b, i, h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
+}
+
+.app {
+    width: 100%;
+    display: table;
+    
+
+    .flex-nav {
+       vertical-align: top;
+       display: table-cell;
+    }
+    .flex-content {
+        background-color: #ecf0f5;
+        display: table-cell;
+        vertical-align: top;
+        padding: 0 25px;
+        width: 100%;
+    }
+}
+

@@ -1,0 +1,141 @@
+[
+    {
+        "navTitle": "Customer Management",
+        "hasSecondNav": true,
+        "icon": "fa fa-users",
+        "parentPath": "customer",
+        "index": "1",
+        "list": [
+            {
+                "navTitle": "All Customers",
+                "path": "/customer/all",
+                "hasThreeNav": false,
+                "icon": "fa fa-circle-o",
+                "index": "1-1"
+            },
+            {
+                "navTitle": "Customer SMS",
+                "path": "/customer/sms",
+                "hasThreeNav": false,
+                "icon": "fa fa-circle-o",
+                "index": "1-2"
+            },
+            {
+                "navTitle": "Phone Contact Record",
+                "path": "/customer/phone-record",
+                "isThreeNav": false,
+                "icon": "fa fa-circle-o",
+                "index": "1-3"
+            }
+        ]
+    },
+    {
+        "navTitle": " Finance Management",
+        "hasSecondNav": true,
+        "icon": "fa fa-users",
+        "parentPath": "finance",
+        "index": "2",
+        "list": [
+            {
+                "navTitle": "Deposit",
+                "path": "/finance/deposit",
+                "hasThreeNav": false,
+                "icon": "fa fa-circle-o",
+                "index": "2-1"
+                
+            },
+            {
+                "navTitle": "Loan Issue",
+                "path": "/finance/loan-issue",
+                "hasThreeNav": false,
+                "icon": "fa fa-circle-o",
+                "index": "2-2"
+               
+            },
+            {
+                "navTitle": "Bonus Issues",
+                "path": "/finance/bonus-issues",
+                "isThreeNav": false,
+                "icon": "fa fa-circle-o",
+                "index": "2-3"
+            }
+        ]
+    },
+    {
+        "navTitle": "Application Management",
+        "hasSecondNav": true,
+        "icon": "fa fa-book",
+        "parentPath": "application",
+        "index": "3",
+        "list": [
+            {
+                "navTitle": "All Review Cases",
+                "path": "/application/all-review-cases",
+                "hasThreeNav": false,
+                "icon": "fa fa-circle-o",
+                "index": "3-1"
+            },
+            {
+                "navTitle": "All Review Tasks",
+                "path": "/application/all-review-tasks",
+                "hasThreeNav": false,
+                "icon": "fa fa-circle-o",
+                "index": "3-2"
+                
+            },
+            {
+                "navTitle": "Case Assignment",
+                "path": "/appliction/case-Assignment",
+                "hasThreeNav": true,
+                "icon": "fa fa-book",
+                "index": "3-3",
+                "list": [
+                    {
+                        "navTitle": "First Review Assignment",
+                        "path": "/appliction/case-assignment/first-review",
+                        "icon": "fa fa-circle-o"
+                    },
+                    {
+                        "navTitle": "Second Review Assignment",
+                        "path": "/appliction/case-assignment/second-review",
+                        "icon": "fa fa-circle-o"
+                    },
+                    {
+                        "navTitle": "Final Review Assignment",
+                        "path": "/appliction/case-assignment/final-review",
+                        "icon": "fa fa-circle-o"
+                    }
+                ]
+            },
+            {
+                "navTitle": "My Review Cases",
+                "path": "/my-review-cases",
+                "hasThreeNav": true,
+                "icon": "fa fa-book",
+                "index": "3-4",
+                "list": [
+                    {
+                        "navTitle": "First Review Assignment",
+                        "path": "",
+                        "icon": "fa fa-circle-o"
+                    },
+                    {
+                        "navTitle": "Second Review Assignment",
+                        "path": "/cx",
+                        "icon": "fa fa-circle-o"
+                    },
+                    {
+                        "navTitle": "Final Review Assignment",
+                        "path": "/cx",
+                        "icon": "fa fa-circle-o"
+                    }, 
+                    {
+                        "navTitle": "Review History Cases",
+                        "path": "/review-history-cases",
+                        "icon": "fa fa-circle-o"
+                    }
+                ]
+            }
+        ]
+    }
+]

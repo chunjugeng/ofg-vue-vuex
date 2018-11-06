@@ -1,0 +1,138 @@
+.search-com {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    
+    .date-from-to {
+        padding: 5px 10px;
+        width: 50%;
+        height: 34px;
+        box-sizing: border-box;
+        display: table;
+        & > div {
+            display: inline-table;
+            height: 34px;
+            span {
+                padding: 0 10px;
+                width: 1%;
+                line-height: 32px;
+                border: 1px solid #d2d6de;
+                white-space: nowrap;
+                display: table-cell;
+                border-right: none;
+                vertical-align: bottom;
+            }
+            input {
+                text-indent: 10px;
+            }
+            &.create {
+                position: relative;
+                width: 60%;
+                float: left;
+                & > div {
+                    position: absolute;
+                }
+            }
+            &.to {
+                width: 40%;
+                position: relative;
+                span {
+                    border-left: none;
+                }
+                & > div {
+                    position: absolute;
+                }
+            }
+        }
+        
+        
+        input {
+            width: 100%;
+            height: 34px;
+            border: 1px solid #d2d6de;
+            display: table-cell;
+            vertical-align: bottom;
+            &:focus {
+                border-color: green;
+                transition: all 0.3s ease-out;
+            }
+        }
+        
+    }
+
+    .default {
+        padding: 5px 10px;
+        width: 33.3333%;
+        height: 34px;
+        box-sizing: border-box;
+        display: table;
+        
+        & > span, input {
+            border: 1px solid #d2d6de;
+            display: table-cell;
+        }
+        & > span {
+            width: 9%;
+            line-height: 32px;
+            border-right: 0;
+            text-align: center;
+            vertical-align: bottom;
+        }
+        input {
+            padding-left: 10px;
+            width: 100%;
+            &:focus {
+                border-color: green;
+                transition: all 0.3s ease-out;
+            }
+        }
+        input, select {
+            height: 34px;
+            border: 1px solid #d2d6de;
+            box-sizing: border-box; 
+        }
+    }
+
+    .select, .extension {
+        display: table;
+        span {
+            padding: 0 10px;
+            line-height: 32px;
+            white-space: nowrap;
+            display: table-cell;
+            vertical-align: bottom;
+        }
+        select {
+            width: 100%;
+            display: table-cell;
+            position: relative;
+            left: -2px;
+            background-color: white;
+        }
+    }
+
+   .query-btn {
+        margin: 10px;
+        width: 100%;
+        button {
+            margin-right: 10px;
+            padding: 0 15px;
+            height: 34px;
+            border: none;
+            display: inline-block;
+            background-color: #3d9970;
+            color: white;
+            transition: all 0.5s ease-out;
+            border-radius: 3px;
+            cursor: pointer;
+            &:hover {
+                background-color: #1d8557;
+            }
+            &[disabled] {
+                background-color: #e4e4e4;
+            }
+        }
+    }
+}
