@@ -85,57 +85,123 @@
             },
             {
                 "navTitle": "Case Assignment",
-                "path": "/appliction/case-Assignment",
+                "path": "/application/case-Assignment",
                 "hasThreeNav": true,
                 "icon": "fa fa-book",
                 "index": "3-3",
                 "list": [
                     {
                         "navTitle": "First Review Assignment",
-                        "path": "/appliction/case-assignment/first-review",
+                        "path": "/application/case-assignment/first-review",
                         "icon": "fa fa-circle-o"
                     },
                     {
                         "navTitle": "Second Review Assignment",
-                        "path": "/appliction/case-assignment/second-review",
+                        "path": "/application/case-assignment/second-review",
                         "icon": "fa fa-circle-o"
                     },
                     {
                         "navTitle": "Final Review Assignment",
-                        "path": "/appliction/case-assignment/final-review",
+                        "path": "/application/case-assignment/final-review",
                         "icon": "fa fa-circle-o"
                     }
                 ]
             },
             {
                 "navTitle": "My Review Cases",
-                "path": "/my-review-cases",
+                "path": "/application/my-review-cases",
                 "hasThreeNav": true,
                 "icon": "fa fa-book",
                 "index": "3-4",
                 "list": [
                     {
                         "navTitle": "First Review Assignment",
-                        "path": "",
+                        "path": "/application/my-review-cases/first",
                         "icon": "fa fa-circle-o"
                     },
                     {
                         "navTitle": "Second Review Assignment",
-                        "path": "/cx",
+                        "path": "/application/my-review-cases/second",
                         "icon": "fa fa-circle-o"
                     },
                     {
                         "navTitle": "Final Review Assignment",
-                        "path": "/cx",
+                        "path": "/application/my-review-cases/final",
                         "icon": "fa fa-circle-o"
                     }, 
                     {
                         "navTitle": "Review History Cases",
-                        "path": "/review-history-cases",
+                        "path": "/application/my-review-cases/review-history",
+                        "icon": "fa fa-circle-o"
+                    }
+                ]
+            },
+
+            {
+                "navTitle": "My Review Efficiency",
+                "path": "/application/final-review-efficiency",
+                "hasThreeNav": true,
+                "icon": "fa fa-book",
+                "index": "3-6",
+                "list": [
+                    {
+                        "navTitle": "Final Review Efficiency",
+                        "path": "/application/final-review-efficiency",
                         "icon": "fa fa-circle-o"
                     }
                 ]
             }
+
+        ]
+    },
+
+
+    {
+        "navTitle": "Collection Management",
+        "hasSecondNav": true,
+        "icon": "fa fa-users",
+        "parentPath": "finance",
+        "index": "5",
+        "list": [
+            {
+                "navTitle": "Collection Cases",
+                "path": "/collection/collection-cases",
+                "hasThreeNav": false,
+                "icon": "fa fa-circle-o",
+                "index": "5-1"
+                
+            },
+            {
+                "navTitle": "Repayment Management",
+                "path": "/collection/Repayment Management",
+                "hasThreeNav": true,
+                "icon": "fa fa-circle-o",
+                "index": "5-2",
+                "list": [
+                    {
+                        "navTitle": "Part Repay Management",
+                        "path": "/collection/part-repay-management",
+                        "hasThreeNav": false,
+                        "icon": "fa fa-circle-o",
+                        "index": "5-1-1"
+                        
+                    },
+                    {
+                        "navTitle": "Reduce Repay Management",
+                        "path": "/collection/reduce-repay-management",
+                        "hasThreeNav": false,
+                        "icon": "fa fa-circle-o",
+                        "index": "5-1-2"
+                        
+                    }
+                ]
+               
+            }
+            
         ]
     }
+
+
+
+
 ]

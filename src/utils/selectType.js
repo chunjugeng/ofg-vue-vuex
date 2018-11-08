@@ -7,39 +7,44 @@ const LoanType = [
     'RE_STUDENT',
     'MARKET_LOAN'
 ];
+const LoanStatus = [
+    'SUBMITTED',
+    'BASIC_REVIEW',
+    'WAIT_APPLY_CONFIRM',
+    'SUPPLEMENT',
+    'PRE_REVIEW',
+    'FIRST_REVIEW',
+    'SECOND_REVIEW',
+    'FINAL_REVIEW',
+    'APPROVED',
+    'REJECTED',
+    'CLOSED',
+    'WITHDRAWN',
+    'WAIT_CONFIRM',
+    'READY_TO_ISSUE',
+    'ISSUING',
+    'CURRENT',
+    'ISSUE_FAILED',
+    'CURRENT_1',
+    'GRACE_PERIOD_1',
+    'OVERDUE_1',
+    'CURRENT_2',
+    'GRACE_PERIOD_2',
+    'OVERDUE_2',
+    'CURRENT_N',
+    'GRACE_PERIOD_N',
+    'OVERDUE_N',
+    'GRACE_PERIOD',
+    'OVERDUE',
+    'PAID_OFF',
+    'PAID_OFF_R',
+    'PAID_OFF_P',
+    'PAID_OFF_1',
+    'PAID_OFF_2',
+    'PAID_OFF_N',
+    'BAD_DEBIT'
+];
 
-function getReviewer() {
-    // const res  = await applicationService.getLoanAppReviewers();
-    return [{
-        "id": 1001,
-        "mobile": "1001",
-        "fullName": "初审员",
-        "type": "ADMIN",
-        "status": {
-            "key": "ACTIVE",
-            "value": "ACTIVE"
-        },
-        "createTime": "2017-10-21 12:52:31",
-        "assignedTimeNum": 0,
-        "assignedLoanAppNum": 0,
-        "groupId": null,
-        "roleIdList": null
-    },
-    {
-        "id": 100048,
-        "mobile": "112233445566",
-        "fullName": "first_yangpu",
-        "type": "ADMIN",
-        "status": {
-            "key": "ACTIVE",
-            "value": "ACTIVE"
-        },
-        "createTime": "2017-12-15 15:59:06",
-        "assignedTimeNum": 0,
-        "assignedLoanAppNum": 0,
-        "groupId": null,
-        "roleIdList": null
-    }];
-}
-// const Reviewer = getReviewer();
-export {LoanType, getReviewer}
+const ReviewStatus = ['HOLD', 'APPROVED', 'OVERRULE', 'CANCEL'];
+const PartRepayStatus = ['WAIT_FOR_DEPOSIT', 'SUCCESS', 'TIME_OUT'];
+export {LoanType, LoanStatus, ReviewStatus, PartRepayStatus}

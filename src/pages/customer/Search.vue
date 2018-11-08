@@ -117,6 +117,4 @@
     }
 </script>
 
-<style lang="sass">
-    @import '~/styles/search.scss';
-</style>
+

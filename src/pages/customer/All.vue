@@ -119,8 +119,3 @@
     }   
 </script>
 
-
-<style lang="scss">
-    @import '~/styles/page-content.scss';
-</style>
-

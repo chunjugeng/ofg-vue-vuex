@@ -1,6 +1,15 @@
 import applicationService from '~/service/application';
 import type from './mutations-type';
 
+function loanAppManagement(pager, page) {
+    const params = {
+        page: page || pager.page,
+        pageSize: pager.pageSize,
+        type: 'media-report',
+        platform: 'desktop'
+    };
+    return applicationService.loadCustomer(params);
+}
 function queryLoanAppManagement(payload) {
     const {state, page} = payload;
     const params = {
@@ -36,41 +45,38 @@ const actions= {
     allReviewTasks: {},
 
     caseAssignment: {
-        first: {
-            search({commit, state}) {
-                
-                commit(type.caseAssignment.first['SEARCH'], res.list);
-            },
-            getTime({commit}, params) {
-                commit(type.caseAssignment.first['GETTIME'], params);
-            },
-            onChange({commit}, ev) {
-                commit(type.caseAssignment.first['ONCHANGE'], ev);
-            },
-            customPageSize({commit, dispatch}, pageSize) {
-                commit(type.caseAssignment.first['CUSTOMPAGESIZE'], pageSize);
-                dispatch('changePage', 0);
-            },
-            async changePage({commit, dispatch, state}, page) {
-                const res = await queryLoanAppManagement({
-                    state,
-                    page
-                });
-                commit(type.caseAssignment.first['UPDATEAPPTABLELIST'], res.list);
-            },
-            async init({commit, dispatch, state}) {
-                commit(type.caseAssignment.first['CUSTOMPAGESIZE'], 10);
-                
-                const [app, review] = await Promise.all([queryLoanAppManagement({state}), queryLoanAppReviewers()]);
-
-                commit(type.caseAssignment.first['INIT'], {
-                    appTotalRecords: app.totalRecords,
-                    reviewTotalRecords: review.totalRecords
-                });
-                
-                commit(type.caseAssignment.first['UPDATEAPPTABLELIST'], app.list);
-                commit(type.caseAssignment.first['UPDATEREVIEWTABLELIST'], review.list);
-            }
+        getTime({commit}, params) {
+            commit(type.caseAssignment['GETTIME'], params);
+        },
+        onChange({commit}, ev) {
+            commit(type.caseAssignment['ONCHANGE'], ev);
+        },
+        customPageSize({commit, dispatch}, pageSize) {
+            commit(type.caseAssignment['CUSTOMPAGESIZE'], pageSize);
+            dispatch('changePage', 0);
+        },
+        async changePage({commit, dispatch, state}, page) {
+            const res = await loanAppManagement(state.appPager, page)
+            commit(type.caseAssignment['UPDATEAPPTABLELIST'], res.list);
+        },
+        async init({commit, state}) {
+            commit(type.caseAssignment['CUSTOMPAGESIZE'], 10);
+            const [app, review] = await Promise.all([loanAppManagement(state.appPager), queryLoanAppReviewers()]);
+            commit(type.caseAssignment['INIT'], {
+                app, review
+            });
+        }
+    },
+    myReviewCase: {
+        async changePage({commit, state}, page) {
+            const res = await loanAppManagement(state, page);
+            commit(type.myReviewCase['UPDATE'], res.list);
+        },
+        async init({commit, state}) {
+            const res = await loanAppManagement(state);
+            commit(type.myReviewCase['INIT'], res.totalRecords);
+            commit(type.myReviewCase['UPDATE'], res.list);
+            
         }
     }
 };

@@ -12,9 +12,6 @@
     </div>   
 </template>
 
-<style lang="sass">
-    @import '~/styles/page-content.scss';
-</style>
 <script>
     import Search from './Search.vue';
     export default {

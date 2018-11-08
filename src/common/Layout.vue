@@ -96,6 +96,9 @@
 </script>
 
 <style lang="sass">
+    @import '~/styles/page-content.scss';
+    @import '~/styles/table-com.scss';
+    @import '~/styles/search.scss';
     .app {
         .flex-nav {
             .fa:before {margin-right: 5px;}

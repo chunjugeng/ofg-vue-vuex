@@ -104,7 +104,3 @@
         props: ['deposit', 'loan', 'bonus']
     }
 </script>
-
-<style lang="sass">
-    @import '~/styles/search.scss';
-</style>

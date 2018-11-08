@@ -47,6 +47,3 @@
         props: ['data', 'ALL', 'SMS', 'MOBILE'],
     }
 </script>
-<style lang="scss">
-    @import '~/styles/table-com.scss';
-</style>

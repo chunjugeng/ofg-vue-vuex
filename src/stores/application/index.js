@@ -19,14 +19,16 @@ const Application = {
         },
         caseAssignment: {
             namespaced: true,
-            modules: {
-                first: {
-                    namespaced: true,
-                    state: state.caseAssignment.first,
-                    mutations: mutations.caseAssignment.first,
-                    actions: actions.caseAssignment.first
-                }
-            }
+            state: state.caseAssignment,
+            mutations: mutations.caseAssignment,
+            actions: actions.caseAssignment,
+           
+        },
+        myReviewCase: {
+            namespaced: true,
+            state: state.myReviewCase,
+            mutations: mutations.myReviewCase,
+            actions: actions.myReviewCase
         }
         
     }

@@ -11,6 +11,7 @@ import Finance from './finance';
 
 //namespaced 
 import Application from './application';
+import Collection from './collection';
 
 import Pager from './pager';
 
@@ -28,7 +29,8 @@ export default new Vuex.Store({
         mobile: Mobile,
         pager: Pager,
         finance: Finance,
-        application: Application
+        application: Application,
+        collection: Collection
     }
 });
 

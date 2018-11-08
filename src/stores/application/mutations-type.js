@@ -7,14 +7,24 @@ const type = {
 
     },
     caseAssignment: {
-        first: {
-            INIT: 'INIT',
-            UPDATEAPPTABLELIST: 'UPDATEAPPTABLELIST',
-            UPDATEREVIEWTABLELIST: 'UPDATEREVIEWTABLELIST',
-            CUSTOMPAGESIZE: 'CUSTOMPAGESIZE',
-            ONCHANGE: 'ONCHANGE',
-            GETTIME: 'GETTIME'
-        }
+        INIT: 'INIT',
+        UPDATE: 'UPDATE',
+        UPDATEAPPTABLELIST: 'UPDATEAPPTABLELIST',
+        CUSTOMPAGESIZE: 'CUSTOMPAGESIZE',
+        ONCHANGE: 'ONCHANGE',
+        GETTIME: 'GETTIME'
+        // first: {
+        //     INIT: 'INIT',
+        //     UPDATEAPPTABLELIST: 'UPDATEAPPTABLELIST',
+        //     UPDATEREVIEWTABLELIST: 'UPDATEREVIEWTABLELIST',
+        //     CUSTOMPAGESIZE: 'CUSTOMPAGESIZE',
+        //     ONCHANGE: 'ONCHANGE',
+        //     GETTIME: 'GETTIME'
+        // }
+    },
+    myReviewCase: {
+        UPDATE: 'UPDATE',
+        INIT: 'INIT'
     }
 };
 

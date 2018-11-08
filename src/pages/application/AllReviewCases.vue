@@ -28,11 +28,6 @@
     </div>   
 </template>
 
-<style lang="sass">
-    @import '~/styles/page-content.scss';
-    @import '~/styles/table-com.scss';
-</style>
-
 <script>
     import {mapActions, mapState} from 'vuex';
     import Search from './Search.vue';

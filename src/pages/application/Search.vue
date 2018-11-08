@@ -114,11 +114,12 @@
                 <span>Reviewer</span>
                 <select v-model="props.reviewer" @change="onChange" name="reviewer">
                     <option disabled value=""></option>
-                    <option v-for="item in reviewers" :key="item.id" :value="item.id">{{item.fullName}}</option>
+                    <option v-for="item in props.reviewers" :key="item.loanId" :value="item.loanId">{{item.simpleName}}</option>
                 </select>
             </div>
             
-            <create-time 
+            <create-time
+                from="Create Time From"
                 :props="props"
                 :getTime="getTime"
             />
@@ -133,7 +134,7 @@
 </template>
 
 <script>
-    import {LoanType, getReviewer} from '~/utils/selectType';
+    import {LoanType} from '~/utils/selectType';
     import Calendar from '~/common/Calendar.vue';
     import CreateTime from '~/common/CreateTime.vue';
     export default {
@@ -148,20 +149,12 @@
             'CASEASSIGNMENTFIRST',
             'props',
             'onChange',
-            'getTime'
+            'getTime',
         ],
-        computed: {
-            reviewers() {
-                return getReviewer();
-            }
-        },
+        
         components: {
             Calendar,
             CreateTime
         }
     }
 </script>
-
-<style lang="scss">
-    @import '~/styles/search.scss';
-</style>

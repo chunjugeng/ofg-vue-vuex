@@ -35,9 +35,6 @@
     </div>
 </template>
 
-<style lang="scss">
-    @import '~/styles/page-content.scss';
-</style>
 
 <script>
     import {mapState, mapActions} from 'vuex';

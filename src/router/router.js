@@ -15,6 +15,21 @@ import BonusIssues from '~/pages/finance/BonusIssues.vue';
 import AllReviewCases from '~/pages/application/AllReviewCases.vue';
 import AllReviewTasks from '~/pages/application/AllReviewTasks.vue';
 import CaseAssignmentFirstReview from '~/pages/application/case-assignment/First.vue';
+import CaseAssignmentSecondReview from '~/pages/application/case-assignment/Second.vue';
+import CaseAssignmentFinalReview from '~/pages/application/case-assignment/Final.vue';
+import FinalReviewEfficiency from '~/pages/application/my-review-efficiency/FinalReviewEfficiency';
+
+import MyReviewCaseFirst from '~/pages/application/my-review-cases/First.vue';
+import MyReviewCaseSecond from '~/pages/application/my-review-cases/Second.vue';
+import MyReviewCaseFinal from '~/pages/application/my-review-cases/Final.vue';
+import MyReviewCaseReviewHistory from '~/pages/application/my-review-cases/ReviewHistory.vue';
+
+
+import CollectionCases from '~/pages/collection/CollectionCases.vue';
+import PartPaymentManagement from '~/pages/collection/repayment-management/Part.vue';
+import ReducePaymentManagement from '~/pages/collection/repayment-management/Reduce.vue';
+
+
 
 
 import Layout from '~/common/Layout.vue';
@@ -58,8 +73,51 @@ const router = new VueRouter({
                     component: AllReviewTasks
                 },
                 {
-                    path: '/appliction/case-assignment/first-review',
+                    path: '/application/case-assignment/first-review',
                     component: CaseAssignmentFirstReview
+                },
+                {
+                    path: '/application/case-assignment/second-review',
+                    component: CaseAssignmentSecondReview
+                },
+                {
+                    path: '/application/case-assignment/final-review',
+                    component: CaseAssignmentFinalReview
+                },
+
+                {
+                    path: '/application/final-review-efficiency',
+                    component: FinalReviewEfficiency
+                },
+
+                {
+                    path: '/appliction/my-review-cases/first',
+                    component: MyReviewCaseFirst
+                },
+                {
+                    path: '/appliction/my-review-cases/second',
+                    component: MyReviewCaseSecond
+                },
+                {
+                    path: '/appliction/my-review-cases/final',
+                    component: MyReviewCaseFinal
+                },
+                {
+                    path: '/appliction/my-review-cases/review-history',
+                    component: MyReviewCaseReviewHistory
+                },
+
+                {
+                    path: '/collection/collection-cases',
+                    component: CollectionCases
+                },
+                {
+                    path: '/collection/part-repay-management',
+                    component: PartPaymentManagement
+                },
+                {
+                    path: '/collection/reduce-repay-management',
+                    component: ReducePaymentManagement
                 }
             ]
         },
