@@ -199,9 +199,78 @@
             }
             
         ]
+    },
+
+    {
+        "navTitle": "System Management",
+        "hasSecondNav": true,
+        "icon": "fa fa-users",
+        "parentPath": "system",
+        "index": "6",
+        "list": [
+            {
+                "navTitle": "Invite Setting Management",
+                "path": "/system/invite",
+                "hasThreeNav": false,
+                "icon": "fa fa-circle-o",
+                "index": "6-1"
+                
+            },
+            {
+                "navTitle": "Diversion Management",
+                "path": "/system/diversion",
+                "hasThreeNav": false,
+                "icon": "fa fa-circle-o",
+                "index": "6-2"
+            }
+            
+        ]
+    },
+
+    {
+        "navTitle": "System Report",
+        "hasSecondNav": true,
+        "icon": "fa fa-users",
+        "parentPath": "report",
+        "index": "7",
+        "list": [
+            {
+                "navTitle": "Finance Report",
+                "path": "/report",
+                "hasThreeNav": true,
+                "icon": "fa fa-circle-o",
+                "index": "7-1",
+                "list": [
+                    {
+                        "navTitle": "Bonus Issue",
+                        "path": "/report/finance/bonus-issue",
+                        "icon": "fa fa-circle-o"
+                    }
+                ]
+            },
+            {
+                "navTitle": "Operaction Report",
+                "path": "/report",
+                "hasThreeNav": true,
+                "icon": "fa fa-circle-o",
+                "index": "7-2",
+                "list": [
+                    {
+                        "navTitle": "Feedback Summary",
+                        "path": "/report/operation/feedback-summary",
+                        "icon": "fa fa-circle-o"
+                    }
+                ]
+            },
+            {
+                "navTitle": "Risk report",
+                "path": "/report",
+                "hasThreeNav": false,
+                "icon": "fa fa-circle-o",
+                "index": "7-3"
+            }
+            
+        ]
     }
-
-
-
 
 ]

@@ -93,6 +93,7 @@
     },
     mounted() {
       this.$store.dispatch('initPage', this.pager);
+      console.log(this.pager, 'this.pager')
     }
   }  
 </script>

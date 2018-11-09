@@ -30,6 +30,14 @@ import PartPaymentManagement from '~/pages/collection/repayment-management/Part.
 import ReducePaymentManagement from '~/pages/collection/repayment-management/Reduce.vue';
 
 
+//system management
+import InviteSettingManagement from '~/pages/system/Invite.vue';
+import DiversionManagement from '~/pages/system/Diversion.vue';
+
+//system report
+import FinanceBonusIssue from '~/pages/system-report/finance-report/BonusIssue.vue';
+import OperationFeedbackSummary from '~/pages/system-report/operation-report/FeedbackSummary.vue';
+
 
 
 import Layout from '~/common/Layout.vue';
@@ -118,6 +126,26 @@ const router = new VueRouter({
                 {
                     path: '/collection/reduce-repay-management',
                     component: ReducePaymentManagement
+                },
+
+                //system management
+                {
+                    path: '/system/invite',
+                    component: InviteSettingManagement
+                },
+                {
+                    path: '/system/diversion',
+                    component: DiversionManagement
+                },
+
+                //system report
+                {
+                    path: '/report/finance/bonus-issue',
+                    component: FinanceBonusIssue
+                },
+                {
+                    path: '/report/operation/feedback-summary',
+                    component: OperationFeedbackSummary
                 }
             ]
         },

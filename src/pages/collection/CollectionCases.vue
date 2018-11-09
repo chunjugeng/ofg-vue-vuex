@@ -22,11 +22,6 @@
     import BaseBody from './Body.vue';
     import Tabs from './Tabs.vue';
     export default {
-        data() {
-            return {
-                
-            }
-        },
         computed: {
             ...mapState('collection', {
                 currType: state=> state.currType,

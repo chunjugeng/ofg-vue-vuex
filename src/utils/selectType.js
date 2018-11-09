@@ -47,4 +47,7 @@ const LoanStatus = [
 
 const ReviewStatus = ['HOLD', 'APPROVED', 'OVERRULE', 'CANCEL'];
 const PartRepayStatus = ['WAIT_FOR_DEPOSIT', 'SUCCESS', 'TIME_OUT'];
-export {LoanType, LoanStatus, ReviewStatus, PartRepayStatus}
+const CustomerType = ['ALL', 'NEW', 'OLD'];
+const IssueStatus = ['CREATED', 'PENDING', 'SUCCEED', 'FAILED'];
+const IssueMethod = ['XENDIT', 'BLUEPAY', 'OTHERS'];
+export {LoanType, LoanStatus, ReviewStatus, PartRepayStatus, CustomerType, IssueStatus, IssueMethod};

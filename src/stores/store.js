@@ -12,6 +12,9 @@ import Finance from './finance';
 //namespaced 
 import Application from './application';
 import Collection from './collection';
+import System from './system';
+import SystemReport from './systemReport';
+
 
 import Pager from './pager';
 
@@ -30,7 +33,9 @@ export default new Vuex.Store({
         pager: Pager,
         finance: Finance,
         application: Application,
-        collection: Collection
+        collection: Collection,
+        system: System,
+        systemReport: SystemReport
     }
 });
 
