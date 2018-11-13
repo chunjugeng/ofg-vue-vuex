@@ -2,8 +2,6 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Login from '~/pages/login/Login.vue';
 
-import All0 from '~/pages/customer/All0.vue';
-
 import All from '~/pages/customer/All.vue';
 import Sms from '~/pages/customer/Sms.vue';
 import PhoneRecord from '~/pages/customer/PhoneRecord.vue';

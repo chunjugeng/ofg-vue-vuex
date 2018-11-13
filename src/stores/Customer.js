@@ -1,81 +1,92 @@
-
-import Vue from 'vue';
-import Vuex from 'vuex';
-import data from '../json/test.json';
-import {get, fetch} from '~/service/fetch';
-
-import CustomerService from '~/service/customer';
-let all= {
-    LOADCUSTOMER: 'LOADCUSTOMER'
-}
-
-const Customer = {
-    // namespaced: true,
+import customerService from '~/service/customer';
+import {countPage, onChange} from '~/utils/helper';
+const type = {
+    INIT: 'INIT',
+    CALCULATEPAGE: 'CALCULATEPAGE',
+    CUSTOMPAGESIZE: 'CUSTOMPAGESIZE',
+    CHANGEUI: 'CHANGEUI',
+    GETTIME: 'GETTIME'
+};
+export default {
+    namespaced: true,
     state: {
-        count: 0,
-        data: [],
-        
-        todos: [
-            { id: 1, text: '...', done: true },
-            { id: 2, text: '...', done: false }
-        ],
-        
-        all: {
-            pager: {
-                page: 0,
-                pageSize: 10,
-                totalRecords: 0
-            },
-            table: {
-                thead: ['code', 'zh-CN', 'en-US', 'Modify Data'],
-                list: []
-            }
-        }
-    },
-    getters: {
-        doneTodos(state) {
-            return state.todos.filter(todo=>todo.done);
-        }
+        loading: true,
+        search: {
+            mobile: '',
+            realName: '',
+            ktp: '',
+            status: '',
+            registerTime: '',
+            toTime: ''
+        },
+        pager: {
+            page: 0,
+            pageSize: 10,
+            totalRecords: 0,
+            totalPage: 0
+        },
+
+        customerList: []
     },
     mutations: {
-        ['INCREMENT'](state) {
-            state.count ++;
+        [type['GETTIME']](state, params) {
+            state.search[params.key] = params.val;
         },
-        ['DECREMENT'](state, payload) {
-            state.count --;
+        [type['CHANGEUI']](state, ev) {
+            onChange.call(state.search, ev);
         },
-        ['INITDATA'](state, payload) {
-            state.data = payload.data;
-            state.all.table.list = payload.data;
-            state.all.pager.totalRecords = 150;
+        [type['CUSTOMPAGESIZE']](state, pageSize) {
+            state.loading = true;
+            state.pager.pageSize = parseFloat(pageSize);
         },
+        [type['CALCULATEPAGE']](state, totalRecords) {
+            const params = {
+                totalRecords, 
+                pageSize: state.pager.pageSize
+            };
+            state.loading = false;
+            const totalPage = countPage(params);
+            state.pager.totalRecords = totalRecords;
+            state.pager.totalPage = totalPage;
+        },
+        [type['INIT']](state, list) {
+            state.customerList = list;
+        }
     },
     actions: {
-        increment({commit}) {
-            commit('INCREMENT');
+        getTime({commit}, params) {
+            commit(type['GETTIME'], params);
         },
-        decrement(context, payload) {
-            let {dispatch, commit, getters, rootGetters, rootState, state} = context;
-            commit('DECREMENT', payload);
-        },
-        initData({commit}) {
-            // fetch({url:'/feapi/errors'}).then((res)=> {
-            //     commit({
-            //         type: 'INITDATA',
-            //         data: res.list
-            //     });
-            // });
-
-            CustomerService.getLoadCustomer({a: 1, b: 2}).then(res=>{
-                commit({
-                    type: 'INITDATA',
-                    data: res.list
-                });
-            });
+        async onQuery({commit, state, dispatch}) {
+            dispatch('changePage', 0);
         },
 
+        changeUI({commit}, ev) {
+            commit(type['CHANGEUI'], ev);
+        },
+
+        queryCustomerList({state}, page) {
+            const params = {
+                page: page || state.pager.page,
+                pageSize: state.pager.pageSize,
+                ...state.search
+            };
+            return customerService.queryCustomerList(params);
+        },
+
+        async customPageSize({commit, dispatch, state}, pageSize) {
+            commit(type['CUSTOMPAGESIZE'], pageSize);
+            await dispatch('changePage');
+            dispatch('initPage', state.pager, {root: true});
+        },
+        async changePage({commit, dispatch}, page) {
+            const res = await dispatch('queryCustomerList', page);
+            commit(type['CALCULATEPAGE'], res.totalRecords);
+            commit(type['INIT'], res.list);
+        },
+
+        async init({commit, dispatch, state, rootState}, pageSize) {
+            await dispatch('customPageSize', pageSize);
+        }
     }
-};
-// });
-
-export default Customer;
+}

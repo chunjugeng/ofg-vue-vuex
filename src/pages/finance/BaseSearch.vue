@@ -10,7 +10,7 @@
             <span class="fa fa-user"></span>
             <input type="text" name="name" placeholder="Customer Name"/> 
         </div>
-        <template v-if="loan || deposit">
+        <template v-if="type === 'LOAN' || type==='DEPOSIT'">
             <div class="default">
                 <span class="fa fa-info"></span>
                 <input type="text" name="appplicationId" placeholder="Application ID"/> 
@@ -22,7 +22,7 @@
             <span class="fa fa-info"></span>
             <input type="text" name="customerId" placeholder="Customer ID"/> 
         </div>
-        <template v-if="deposit">
+        <template v-if="type ==='DEPOSIT'">
             <div class="default">
                 <span class="fa fa-info"></span>
                 <input type="text" name="paymentId" placeholder="Payment Code"/> 
@@ -47,7 +47,7 @@
 
         
 
-        <template v-if="bonus || loan">
+        <template v-if="type==='BONUS' || type==='LOAN'">
             <div class="default">
                 <span class="fa fa-info"/>
                 <input type="text" name="outTransactionId" placeholder="Out Transaction ID"/>
@@ -86,7 +86,7 @@
             </div>
         </div>
 
-        <template v-if="deposit">
+        <template v-if="type==='DEPOSIT'">
             <div class="default select">
                 <span >Extension Nums</span>
                 <input type="text" name="extensionNums"/> 
@@ -101,6 +101,6 @@
 </template>
 <script>
     export default {
-        props: ['deposit', 'loan', 'bonus']
+        props: ['type']
     }
 </script>

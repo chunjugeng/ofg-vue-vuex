@@ -1,10 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import Login from './login';
-import Customer from './Customer';
-import All from './customer/all';
-import Sms from './customer/sms';
-import Mobile from './customer/mobile';
+import Customer from './customer';
 
 //namespace 
 import Finance from './finance';
@@ -26,13 +23,10 @@ export default new Vuex.Store({
     modules: {
         login: Login,
         customer: Customer,
-        nav: nav,
-        all: All,
-        sms: Sms,
-        mobile: Mobile,
-        pager: Pager,
         finance: Finance,
         application: Application,
+        nav: nav,
+        pager: Pager,
         collection: Collection,
         system: System,
         systemReport: SystemReport

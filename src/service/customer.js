@@ -1,6 +1,6 @@
 import {get} from './fetch';
 class Customer {
-    getLoadCustomer(params) {
+    queryCustomerList(params) {
         return get('/feapi/news', params);
     }
     queryLoadCustomer(params) {

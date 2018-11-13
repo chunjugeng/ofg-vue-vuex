@@ -1,21 +1,19 @@
 <template>
-    <div class="date-from-to" v-else>
-        <div class="create">
-            <span>{{from}}</span>
-            <input type="text" name="createTime" @click="showCreateTime" v-model="props.createTime" />
+    <div class="date-from-to">
+        <div class="create" v-if="register">
+            <span>Register Time</span>
+            <input type="text" name="registerTime" @click="showCreateTime" :value="registerTime"/>
             <div v-if="isShowCreateTime" @click="cancelBubbleEv">
-                <Calendar @date-text="onTime('createTime', $event)" />
+                <Calendar @date-text="onTime('registerTime', $event)" />
             </div>
         </div>
         <div class="to">
             <span>To</span>
-            <input type="text" name="toTime" @click="showToTime" v-model="props.toTime" />
+            <input type="text" name="toTime" @click="showToTime" :value="toTime"/>
             <div v-if="isShowToTime" @click="cancelBubbleEv">
                 <Calendar @date-text="onTime('toTime', $event)"/>
             </div>
         </div>
-
-        
     </div>
 
 </template>
@@ -25,22 +23,24 @@
     export default {
         data() {
             return {
+                registerTime: '',
+                toTime: '',
                 isShowCreateTime: false,
                 isShowToTime: false
             }
         },
         props: [
             'props',
-            // 'getTime',
             'from',
+            'register',
+            'getTime'
         ],
         methods: {
             onTime(name, dateText) {
-                // this.getTime(name, dateText);
-                // this[name] = dateText;
+                this[name] = dateText;
+                this.getTime({key: name, val: dateText});
                 this.isShowCreateTime = false;
                 this.isShowToTime = false;
-
             },
             showCreateTime(ev) {
                 ev.cancelBubble = true;
