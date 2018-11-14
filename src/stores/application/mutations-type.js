@@ -1,11 +1,7 @@
 const type = {
-    allReviewCases: {
-        INIT: 'INIT'
-
-    },
-    allReviewTasks: {
-
-    },
+    INIT: 'INIT',
+    CALCULATEPAGES: 'CALCULATEPAGES',
+    CUSTOMPAGESIZE: 'CUSTOMPAGESIZE',
     caseAssignment: {
         INIT: 'INIT',
         UPDATE: 'UPDATE',
@@ -21,10 +17,6 @@ const type = {
         //     ONCHANGE: 'ONCHANGE',
         //     GETTIME: 'GETTIME'
         // }
-    },
-    myReviewCase: {
-        UPDATE: 'UPDATE',
-        INIT: 'INIT'
     }
 };
 

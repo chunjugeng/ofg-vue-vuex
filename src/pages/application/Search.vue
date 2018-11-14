@@ -1,6 +1,6 @@
 <template>
     <div class="search-com">
-        <template v-if="ALLREVIEWCASES">
+        <template v-if="type==='ALLREVIEWCASES'">
             <div class="default">
                 <span class="fa fa-phone"/>
                 <input type="text" name="mobile" placeholder="Mobile"/>
@@ -11,7 +11,7 @@
             </div>
         </template>
 
-        <template v-if="ALLREVIEWCASES || ALLREVIEWTASKS">
+        <template v-if="type==='ALLREVIEWCASES' || type==='ALLREVIEWTASKS'">
             <div class="default">
                 <span class="fa fa-id-card"/>
                 <input type="text" name="applicationId" placeholder="Application ID"/>
@@ -19,7 +19,7 @@
         </template>
 
 
-        <template v-if="ALLREVIEWCASES">
+        <template v-if="type==='ALLREVIEWCASES'">
             <div class="default select">
                 <span>Loan Status</span>
                 <select >
@@ -77,7 +77,7 @@
             </div>
         </template>
 
-        <template v-if="ALLREVIEWTASKS">
+        <template v-if="type==='ALLREVIEWTASKS'">
             <div class="default select">
                 <span>Run Option</span>
                 <select>
@@ -101,7 +101,7 @@
         </template>
 
 
-        <template v-if="CASEASSIGNMENTFIRST">
+        <template v-if="type==='CASEASSIGNMENTFIRST'">
             <div class="default select">
                 <span>Loan Type</span>
                 <select v-model="props.loanType" @change="onChange" name="loanType">
@@ -128,7 +128,7 @@
 
         <div class="query-btn">
             <button>Search</button>
-            <button v-if="CASEASSIGNMENTFIRST">Assign</button>
+            <button v-if="type==='CASEASSIGNMENTFIRST'">Assign</button>
         </div>
     </div>
 </template>
@@ -144,9 +144,7 @@
             }
         },
         props: [
-            'ALLREVIEWCASES',
-            'ALLREVIEWTASKS',
-            'CASEASSIGNMENTFIRST',
+            'type',
             'props',
             'onChange',
             'getTime',

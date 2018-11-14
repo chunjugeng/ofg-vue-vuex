@@ -1,22 +1,4 @@
 const state = {
-    allReviewCases: {
-        pager: {
-            page: 0,
-            pageSize: 10,
-            totalRecords: 0,
-            totalPage: 0
-        },
-        table: {
-            thead: ['Application ID', 'Customer Name', 'Customer Mobile', 'Duration', 'Amount', 'Loan Type', 'Create Time<span class="fa fa-info"/>', 'Loan Status', 'Extension Nums', 'Issue Success Time', 'Reviewer'],
-            list: []
-        }
-    },
-    allReviewTasks: {
-        table: {
-            thead: [],
-            list: []
-        }
-    },
 
     caseAssignment: {
         search: {
@@ -41,17 +23,16 @@ const state = {
         }
     },
 
-    myReviewCase: {
+    myReviewCases: {
+        loading: true,
+        search: {},
         pager: {
             page: 0,
             pageSize: 10,
             totalRecords: 0,
             totalPage: 0
         },
-        table: {
-            thead: ['Application ID', 'Customer Name', 'Customer Mobile', 'Duration', 'Amount', 'Loan Type', 'Create Time<span class="fa fa-info"/>', 'Loan Status', 'Extension Nums', 'Issue Success Time', 'Reviewer'],
-            list: []
-        }
+        tableList: []
     }
 };
 

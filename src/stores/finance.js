@@ -81,7 +81,7 @@ export default {
             dispatch('initPage', state.pager, {root: true});
         },
         async changePage({commit, dispatch}, params) {
-            const res = await dispatch(params.type, params.page);
+            const res = await dispatch(params.typew, params.page);
             commit(type['CALCULATEPAGE'], res.totalRecords);
             commit(type['INIT'], res.list);
         },

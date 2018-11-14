@@ -26,24 +26,6 @@ function queryLoanAppReviewers() {
 }
 
 const actions= {
-    allReviewCases: {
-        queryLoanAppManagement({state}, page) {
-            const params = {
-                page: page|| state.pager.page,
-                pageSize: state.pager.pageSize,
-                type: 'media-report',
-                platform: 'desktop'
-            };
-            return applicationService.loadCustomer(params);
-        },
-        async init({commit, dispatch}) {
-            const res = await dispatch('queryLoanAppManagement');
-            commit(type.allReviewCases['INIT'], res.list);
-        }
-
-    },
-    allReviewTasks: {},
-
     caseAssignment: {
         getTime({commit}, params) {
             commit(type.caseAssignment['GETTIME'], params);
@@ -67,16 +49,30 @@ const actions= {
             });
         }
     },
-    myReviewCase: {
-        async changePage({commit, state}, page) {
-            const res = await loanAppManagement(state, page);
-            commit(type.myReviewCase['UPDATE'], res.list);
+    myReviewCases: {
+        loadCustomer({state}, page) {
+            const params = {
+                page: page|| state.pager.page,
+                pageSize: state.pager.pageSize,
+                type: 'media-report',
+                platform: 'desktop'
+            };
+            return applicationService.loadCustomer(params);
         },
-        async init({commit, state}) {
-            const res = await loanAppManagement(state);
-            commit(type.myReviewCase['INIT'], res.totalRecords);
-            commit(type.myReviewCase['UPDATE'], res.list);
-            
+        async customPageSize({dispatch, commit, state}, pageSize) {
+            commit(type['CUSTOMPAGESIZE'], pageSize);
+            await dispatch('changePage', 0);
+            dispatch('initPage', state.pager, {root: true});
+        },
+
+        async changePage({dispatch, commit}, page) {
+            let res = await dispatch('loadCustomer', page);
+            commit(type['CALCULATEPAGES'], res.totalRecords);
+
+            commit(type['INIT'], res);
+        },
+        async init({dispatch}, pageSize) {
+            dispatch('customPageSize', pageSize);
         }
     }
 };

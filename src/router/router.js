@@ -15,12 +15,12 @@ import AllReviewTasks from '~/pages/application/AllReviewTasks.vue';
 import CaseAssignmentFirstReview from '~/pages/application/case-assignment/First.vue';
 import CaseAssignmentSecondReview from '~/pages/application/case-assignment/Second.vue';
 import CaseAssignmentFinalReview from '~/pages/application/case-assignment/Final.vue';
-import FinalReviewEfficiency from '~/pages/application/my-review-efficiency/FinalReviewEfficiency';
+import MyReviewCasesFirst from '~/pages/application/my-review-cases/First.vue';
+import MyReviewCasesSecond from '~/pages/application/my-review-cases/Second.vue';
+import MyReviewCasesFinal from '~/pages/application/my-review-cases/Final.vue';
+import MyReviewCasesReviewHistory from '~/pages/application/my-review-cases/ReviewHistory.vue';
 
-import MyReviewCaseFirst from '~/pages/application/my-review-cases/First.vue';
-import MyReviewCaseSecond from '~/pages/application/my-review-cases/Second.vue';
-import MyReviewCaseFinal from '~/pages/application/my-review-cases/Final.vue';
-import MyReviewCaseReviewHistory from '~/pages/application/my-review-cases/ReviewHistory.vue';
+import FinalReviewEfficiency from '~/pages/application/my-review-efficiency/FinalReviewEfficiency';
 
 
 import CollectionCases from '~/pages/collection/CollectionCases.vue';
@@ -97,32 +97,32 @@ const router = new VueRouter({
                 },
 
                 {
-                    path: '/appliction/my-review-cases/first',
-                    component: MyReviewCaseFirst
+                    path: '/application/my-review-cases/first',
+                    component: MyReviewCasesFirst
                 },
                 {
-                    path: '/appliction/my-review-cases/second',
-                    component: MyReviewCaseSecond
+                    path: '/application/my-review-cases/second',
+                    component: MyReviewCasesSecond
                 },
                 {
-                    path: '/appliction/my-review-cases/final',
-                    component: MyReviewCaseFinal
+                    path: '/application/my-review-cases/final',
+                    component: MyReviewCasesFinal
                 },
                 {
-                    path: '/appliction/my-review-cases/review-history',
-                    component: MyReviewCaseReviewHistory
+                    path: '/application/my-review-cases/review-history',
+                    component: MyReviewCasesReviewHistory
                 },
 
                 {
-                    path: '/collection/collection-cases',
+                    path: '/collecation/collection-cases',
                     component: CollectionCases
                 },
                 {
-                    path: '/collection/part-repay-management',
+                    path: '/collecation/part-repay-management',
                     component: PartPaymentManagement
                 },
                 {
-                    path: '/collection/reduce-repay-management',
+                    path: '/collecation/reduce-repay-management',
                     component: ReducePaymentManagement
                 },
 

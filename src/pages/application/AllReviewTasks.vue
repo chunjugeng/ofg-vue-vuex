@@ -1,22 +1,17 @@
 <template>
-    <div class="page-content">
-        <div class="search">
-            <h1>Review Task</h1>
-            <div>
-                <h5>Search</h5>
-                <Search 
-                    :ALLREVIEWTASKS="true" 
-                    />
-            </div>
-        </div>
-    </div>   
+    <base-body 
+        title="Application Review Management"
+        type="ALLREVIEWTASKS"
+        tableT="Task List"
+    />
 </template>
 
 <script>
-    import Search from './Search.vue';
+    import BaseBody from './BaseBody.vue';
+
     export default {
         components: {
-            Search
+            BaseBody
         }
     }
 </script>
