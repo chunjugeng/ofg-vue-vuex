@@ -33,8 +33,24 @@ import InviteSettingManagement from '~/pages/system/Invite.vue';
 import DiversionManagement from '~/pages/system/Diversion.vue';
 
 //system report
-import FinanceBonusIssue from '~/pages/system-report/finance-report/BonusIssue.vue';
+import SystemReportFinanceLoanIssue from '~/pages/system-report/finance-report/LoanIssue.vue';
+import SystemReportFinanceBonusIssue from '~/pages/system-report/finance-report/BonusIssue.vue';
+import SystemReportFinanceLoanDeposit from '~/pages/system-report/finance-report/LoanDeposit.vue';
+
+import SystemReportLoanOperation from '~/pages/system-report/operation-report/LoanOperation.vue';
+import SystemReportLoanRepayment from '~/pages/system-report/operation-report/LoanRepayment.vue';
+import PlatformStatisticsData from '~/pages/system-report/operation-report/PlatformStatisticsData.vue';
+import PlatformStatisticsDataAggregation from '~/pages/system-report/operation-report/PlatformStatisticsDataAggregation.vue';
+import SystemReportLoanOverdue from '~/pages/system-report/operation-report/LoanOverdue.vue';
+import SystemReportCustomerInviteDetail from '~/pages/system-report/operation-report/CustomerInviteDetail.vue';
+import ConversionStatistics from '~/pages/system-report/operation-report/ConversionStatistics.vue';
+import ReviewEfficiency from '~/pages/system-report/operation-report/ReviewEfficiency.vue';
+import SystemReportReviewHistoty from '~/pages/system-report/operation-report/ReviewHistory.vue';
+import ReviewMonitor from '~/pages/system-report/operation-report/ReviewMonitor.vue';
+
+
 import OperationFeedbackSummary from '~/pages/system-report/operation-report/FeedbackSummary.vue';
+
 
 
 
@@ -42,10 +58,22 @@ import Layout from '~/common/Layout.vue';
 
 Vue.use(VueRouter);
 const router = new VueRouter({
+    mode: 'hash',
+    linkActiveClass: 'navActive',
     routes: [
+        {
+            path: '/',
+            redirect: '/login'
+        },
+        {
+            path: '/login',
+            name: 'login',
+            component: Login
+        },
         {
             path: '/page', component: Layout,
             children: [
+                //customer
                 {
                     path: '/customer/all',
                     component: All
@@ -58,6 +86,7 @@ const router = new VueRouter({
                     path: '/customer/phone-record',
                     component: PhoneRecord
                 },
+                //finance
                 {
                     path: '/finance/deposit',
                     component: Deposits
@@ -70,6 +99,7 @@ const router = new VueRouter({
                     path: '/finance/bonus-issues',
                     component: BonusIssues
                 },
+                //application
                 {
                     path: '/application/all-review-cases',
                     component: AllReviewCases
@@ -112,17 +142,17 @@ const router = new VueRouter({
                     path: '/application/my-review-cases/review-history',
                     component: MyReviewCasesReviewHistory
                 },
-
+                //collection
                 {
-                    path: '/collecation/collection-cases',
+                    path: '/collection/collection-cases',
                     component: CollectionCases
                 },
                 {
-                    path: '/collecation/part-repay-management',
+                    path: '/collection/part-repay-management',
                     component: PartPaymentManagement
                 },
                 {
-                    path: '/collecation/reduce-repay-management',
+                    path: '/collection/reduce-repay-management',
                     component: ReducePaymentManagement
                 },
 
@@ -138,17 +168,62 @@ const router = new VueRouter({
 
                 //system report
                 {
+                    path: '/report/finance/loan-issue',
+                    component: SystemReportFinanceLoanIssue
+                },
+                {
                     path: '/report/finance/bonus-issue',
-                    component: FinanceBonusIssue
+                    component: SystemReportFinanceBonusIssue
+                },
+                {
+                    path: '/report/finance/loan-deposit',
+                    component: SystemReportFinanceLoanDeposit
+                },
+                {
+                    path: '/report/operation/loan-operation',
+                    component: SystemReportLoanOperation
+                },
+                {
+                    path: '/report/operation/loan-repayment',
+                    component: SystemReportLoanRepayment
+                },
+                {
+                    path: '/report/operation/platform-statistics-data',
+                    component: PlatformStatisticsData
+                },
+                {
+                    path: '/report/operation/platform-statistics-data-aggregation',
+                    component: PlatformStatisticsDataAggregation
+                },
+                {
+                    path: '/report/operation/loan-overdue',
+                    component: SystemReportLoanOverdue
+                },
+                {
+                    path: '/report/operation/customer-invite-detail',
+                    component: SystemReportCustomerInviteDetail
+                },
+                {
+                    path: '/report/operation/conversion-statistics',
+                    component: ConversionStatistics
+                },
+                {
+                    path: '/report/operation/review-history',
+                    component: SystemReportReviewHistoty
+                },
+                {
+                    path: '/report/operation/review-efficiency',
+                    component: ReviewEfficiency
+                },
+                {
+                    path: '/report/operation/review-monitor',
+                    component: ReviewMonitor
                 },
                 {
                     path: '/report/operation/feedback-summary',
                     component: OperationFeedbackSummary
                 }
             ]
-        },
-        {
-            path: '/login', component: Login
         }
     ] 
 });

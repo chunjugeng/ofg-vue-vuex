@@ -1,49 +1,18 @@
-import {countPage} from '~/utils/helper';
+import type from './mutations-type';
 import systemService from '~/service/system';
-const type = {
-    INIT: 'INIT',
-    CALCULATEPAGE: 'CALCULATEPAGE',
-    CUSTOMPAGESIZE: 'CUSTOMPAGESIZE'
-};
 export default {
-    namespaced: true,
-    state: {
-        loading: true,
-        search: {
-            key: '',
-            value: '',
-            name: ''
-        },
-        pager: {
-            page: 0,
-            pageSize: 10,
-            totalRecords: 0,
-            totalPage: 0
+    finance: {
+        LOANISSUE({state}, page) {
+            const params = {
+                page: page || state.pager.page,
+                pageSize: state.pager.pageSize,
+                type: 'media-report',
+                platform: 'desktop'
+            };
+            return systemService.loadCustomer(params);
         },
 
-        tableList: []
-    },
-    mutations: {
-        [type['CUSTOMPAGESIZE']](state, pageSize) {
-            state.loading = true;
-            state.pager.pageSize = parseFloat(pageSize);
-        },
-        [type['CALCULATEPAGE']](state, totalRecords) {
-            const params = {
-                totalRecords, 
-                pageSize: state.pager.pageSize
-            };
-            state.loading = false;
-            const totalPage = countPage(params);
-            state.pager.totalRecords = totalRecords;
-            state.pager.totalPage = totalPage;
-        },
-        [type['INIT']](state, list) {
-            state.tableList = list;
-        }
-    },
-    actions: {
-        DEPOSIT({state}, page) {
+        BONUSISSUE({state}, page) {
             const params = {
                 page: page || state.pager.page,
                 pageSize: state.pager.pageSize,
@@ -52,16 +21,7 @@ export default {
             };
             return systemService.loadCustomer(params);
         },
-        LOAN({state}, page) {
-            const params = {
-                page: page || state.pager.page,
-                pageSize: state.pager.pageSize,
-                type: 'media-report',
-                platform: 'desktop'
-            };
-            return systemService.loadCustomer(params);
-        },
-        BONUS({state}, page) {
+        LOANDEPOSIT({state}, page) {
             const params = {
                 page: page || state.pager.page,
                 pageSize: state.pager.pageSize,
@@ -73,11 +33,7 @@ export default {
 
         async customPageSize({commit, dispatch, state}, params) {
             commit(type['CUSTOMPAGESIZE'], params.pageSize);
-            
-            await dispatch('changePage', {
-                type: params.type,
-                page: 0
-            });
+            await dispatch('changePage', {type: params.type, page: 0});
             dispatch('initPage', state.pager, {root: true});
         },
         async changePage({commit, dispatch}, params) {
@@ -86,9 +42,22 @@ export default {
             commit(type['INIT'], res.list);
         },
 
-        async init({commit, dispatch}, params) {
+        async init({dispatch}, params) {
             await dispatch('customPageSize', params);
+            
         }
-
+    },
+    operation: {
+        customPageSize({commit}, pageSize) {
+            commit(type['CUSTOMPAGESIZE'], pageSize);
+        },
+        changePage({commit}, list) {
+            commit(type['UPDATETABLELIST'], list);
+        },
+        init({commit, dispatch, state}, res) {
+            commit(type['CALCULATEPAGE'], res.totalRecords);
+            commit(type['UPDATETABLELIST'], res.list);
+            dispatch('initPage', state.pager, {root: true});
+        }
     }
 }

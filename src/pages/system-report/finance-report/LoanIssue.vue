@@ -1,7 +1,7 @@
 <template>
     <base-body
         :parent="parentProps"
-        type="BONUSISSUE"
+        type="LOANISSUE"
     >
         <template>
             <tbody>
@@ -11,7 +11,14 @@
                     <td>xxxxxx</td>
                     <td>{{item.validTime}}</td>
                     <td>{{item.modifyDate}}</td>
-                            
+                    <td>{{item.validTime}}</td>
+                    <td>{{item.modifyDate}}</td>
+                    <td>{{item.validTime}}</td>
+                    <td>{{item.modifyDate}}</td>
+                    <td>{{item.validTime}}</td>
+                    <td>{{item.modifyDate}}</td>
+                    <td>{{item.validTime}}</td>
+                    <td>{{item.modifyDate}}</td>
                 </tr>
             </tbody>
         </template>
@@ -27,8 +34,8 @@
         data() {
             return {
                 parentProps: {
-                    title: 'Bonus Issue',
-                    tableThead: ['Setting ID', 'Key', 'Value', 'UpdateTime', 'CreateTime'],
+                    title: 'Loan Issue',
+                    tableThead: ['Application ID', 'Loan Issue ID', 'Customer Mobile', 'customer name', 'Ktp Number', 'issue time', 'amount', 'IssueAmount', 'Actual Amount', 'Loan Type', 'apply duration', 'Issue Duration', 'apply duration unit', 'loanApp current status', 'code'],
                 }
             }
         },
@@ -36,9 +43,6 @@
             ...mapState('systemReport/finance', {
                 tableList: state=> state.tableList
             })
-        },
-        methods: {
-            
         },
         components: {
             BaseBody

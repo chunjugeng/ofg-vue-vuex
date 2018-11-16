@@ -24,32 +24,31 @@
                 </div>
             </header>
             <aside class="flex-nav"  >
-                <div class="nav" :style="{'width': !isCollapse ? '230px' : 'auto'}">
+                <div class="nav" :style="{'width': !isCollapse ? '230px' : '64px'}">
                     <template>
-                        <el-menu :unique-opened="true" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse" background-color="#222d32" text-color="#bfc7cb" :collapse-transition="false">
+                        <el-menu :unique-opened="true" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse" background-color="#222d32"  :collapse-transition="false" :default-active="currIndex +'-1'" active-text-color="#fff">
                             <div class="logo">
                                 <img src="../images/logo.jpg"/>
                             </div>
                             <h5 v-show="!isCollapse">management</h5>
-                            <el-submenu v-for="(item, index) in navRoute" :key="index" :index="item.index">
-                                <template slot="title" class="first-nav">
-                                    <i :class="item.icon"></i>
-                                    <span slot="title">{{item.navTitle}}</span>
+                            <el-submenu v-for="(item, index) in navRoute" :key="item.index" :index="item.index" :class="{'parentActive': item.index === currIndex}">
+                                <template slot="title">
+                                    <span slot="title" @click="changeNav(item.index)"><i :class="item.icon"/>{{item.navTitle}}</span>
                                 </template>
                                 
-                                <template v-for="(v, index) in item.list" >
+                                <template v-for="(v, n) in item.list" >
                                     <el-submenu v-if="v.hasThreeNav" :index="v.index">
                                         <span slot="title">
-                                            <i :class="v.icon"></i>
+                                            <i :class="v.icon"/>
                                             {{v.navTitle}}
                                         </span>
-                                        <el-menu-item :index="v.index" class="marginL10" v-for="(l, id) in v.list" :key="id">
-                                            <router-link :to="l.path">{{l.navTitle}}</router-link>
+                                        <el-menu-item :index="v.index" class="marginL10" v-for="(l, id) in v.list" :key="id" >
+                                            <router-link :to="l.path"><i v-if="l.icon" :class="l.icon"/>{{l.navTitle}}</router-link>
                                         </el-menu-item>
                                     </el-submenu>
                                     <el-menu-item :index="v.index" v-else>
-                                        <i :class="v.icon"></i>
-                                        <router-link :to="v.path">{{v.navTitle}}</router-link>
+                                        
+                                        <router-link :to="v.path"><i :class="v.icon"/>{{v.navTitle}}</router-link>
                                         
                                     </el-menu-item>
                                 </template>
@@ -69,26 +68,49 @@
 
 
 <script>
-    // import NavRoute from '~/common/Nav.vue';
     import {mapState} from 'vuex';
     export default {
         data() {
             return {
-                isCollapse: false
+                isCollapse: false,
+                currIndex: 0
             }
         },
         computed: {
-            ...mapState({
-                navRoute: state=> state.nav.navRoute
+            ...mapState('nav', {
+                navRoute: state=> state.navRoute,
             })
         },
         methods: {
+            changeNav(index) {
+                this.currIndex = index;
+            },
             handleOpen(key, keyPath) {
                 console.log(key, keyPath);
             },
             handleClose(key, keyPath) {
                 console.log(key, keyPath);
+            },
+            init(url) {
+                this.navRoute.map(nav=> {
+                    if (url.indexOf(nav.parentPath) > 0) {
+                        this.currIndex = nav.index;
+                    }
+                });
             }
+        },
+
+        watch: {
+            isCollapse() {
+                this.$store.dispatch('nav/calculateClientWidth', this.isCollapse);
+            }
+        },
+        created() {
+            const url= location.href;
+            this.init(url);
+        },
+        mounted() {
+            console.log(this.$parent,  'parent');
         },
         components: {
         },
@@ -150,15 +172,16 @@
             ul {
                 li {
                     display: inline-block;
-                    color: white;
                     a {
                         height: 100%;
                         display: inline-block;
                         padding: 0 7px;
+                        color: white;
                         &:hover {
                             background-color: #128941;
                         }
                     }
+                    
                 }
             }
         }
@@ -175,35 +198,57 @@
                 height:  40px !important;
                 line-height: 40px !important;
                 padding-left: 15px !important;
+                
             }
+            a.router-link-exact-active {
+                color: white !important;
+                i {color: white !important;}
+            }
+        }
+        li a {
+            height: 100%;
+            display: inline-block;
+            width: 100%;
+           
         }
         li a, li div, li {
             color: #bfc7cb;
-            .is-active {
-                color: #bfc7cb !important;
-            }
-            &:hover {
-                color: white!important;
-            }
-            .el-menu-item {
+            &.el-menu-item {
                 height: 35px !important;
                 line-height: 35px !important;
                 padding: 0 20px !important;
+                
+                &:hover {
+                   span, i, a {
+                        color: white !important;
+                    }
+                }
+               
             }
-            &:active {
-                color: white;
-            }
+
         }
         & > li {
-            & > div.el-submenu__title {
+            .el-submenu__title {
                 border-left: 3px solid transparent;
+                &:hover {
+                    border-color: green !important;
+                    color: white !important;
+                    span, i {
+                        color: white !important;
+                    }
+                }
             }
-            &.is-opened {
-                &>div.el-submenu__title {
+            &.parentActive {
+                & >div.el-submenu__title {
+                    color: white !important;
                     border-color: green !important;
                     background: #2d3b41 !important;
-                    
+                    span, i {
+                        color: white !important;
+                    }
                 }
+            }
+            &.is-opened {
                 ul[role="menu"]{
                     background: #8aa4af !important; 
                 }

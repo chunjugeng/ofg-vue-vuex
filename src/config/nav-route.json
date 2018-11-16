@@ -30,7 +30,7 @@
         ]
     },
     {
-        "navTitle": " Finance Management",
+        "navTitle": "Finance Management",
         "hasSecondNav": true,
         "icon": "fa fa-users",
         "parentPath": "finance",
@@ -142,7 +142,7 @@
                 "path": "/application/final-review-efficiency",
                 "hasThreeNav": true,
                 "icon": "fa fa-book",
-                "index": "3-6",
+                "index": "3-5",
                 "list": [
                     {
                         "navTitle": "Final Review Efficiency",
@@ -159,16 +159,16 @@
     {
         "navTitle": "Collection Management",
         "hasSecondNav": true,
-        "icon": "fa fa-users",
-        "parentPath": "finance",
-        "index": "5",
+        "icon": "fa fa-book",
+        "parentPath": "collection",
+        "index": "4",
         "list": [
             {
                 "navTitle": "Collection Cases",
                 "path": "/collection/collection-cases",
                 "hasThreeNav": false,
                 "icon": "fa fa-circle-o",
-                "index": "5-1"
+                "index": "4-1"
                 
             },
             {
@@ -176,14 +176,14 @@
                 "path": "/collection/Repayment Management",
                 "hasThreeNav": true,
                 "icon": "fa fa-circle-o",
-                "index": "5-2",
+                "index": "4-2",
                 "list": [
                     {
                         "navTitle": "Part Repay Management",
                         "path": "/collection/part-repay-management",
                         "hasThreeNav": false,
                         "icon": "fa fa-circle-o",
-                        "index": "5-1-1"
+                        "index": "4-1-1"
                         
                     },
                     {
@@ -191,7 +191,7 @@
                         "path": "/collection/reduce-repay-management",
                         "hasThreeNav": false,
                         "icon": "fa fa-circle-o",
-                        "index": "5-1-2"
+                        "index": "4-1-2"
                         
                     }
                 ]
@@ -200,20 +200,19 @@
             
         ]
     },
-
     {
         "navTitle": "System Management",
         "hasSecondNav": true,
-        "icon": "fa fa-users",
+        "icon": "fa fa-book",
         "parentPath": "system",
-        "index": "6",
+        "index": "5",
         "list": [
             {
                 "navTitle": "Invite Setting Management",
                 "path": "/system/invite",
                 "hasThreeNav": false,
                 "icon": "fa fa-circle-o",
-                "index": "6-1"
+                "index": "5-1"
                 
             },
             {
@@ -221,29 +220,38 @@
                 "path": "/system/diversion",
                 "hasThreeNav": false,
                 "icon": "fa fa-circle-o",
-                "index": "6-2"
+                "index": "5-2"
             }
             
         ]
     },
-
     {
         "navTitle": "System Report",
         "hasSecondNav": true,
-        "icon": "fa fa-users",
+        "icon": "fa fa-table",
         "parentPath": "report",
-        "index": "7",
+        "index": "6",
         "list": [
             {
                 "navTitle": "Finance Report",
                 "path": "/report",
                 "hasThreeNav": true,
-                "icon": "fa fa-circle-o",
-                "index": "7-1",
+                "icon": "fa fa-table",
+                "index": "6-1",
                 "list": [
+                    {
+                        "navTitle": "Loan Issue",
+                        "path": "/report/finance/loan-issue",
+                        "icon": "fa fa-circle-o"
+                    },
                     {
                         "navTitle": "Bonus Issue",
                         "path": "/report/finance/bonus-issue",
+                        "icon": "fa fa-circle-o"
+                    },
+                    {
+                        "navTitle": "Loan Deposit",
+                        "path": "/report/finance/loan-deposit",
                         "icon": "fa fa-circle-o"
                     }
                 ]
@@ -252,9 +260,59 @@
                 "navTitle": "Operaction Report",
                 "path": "/report",
                 "hasThreeNav": true,
-                "icon": "fa fa-circle-o",
-                "index": "7-2",
+                "icon": "fa fa-table",
+                "index": "6-2",
                 "list": [
+                    {
+                        "navTitle": "Loan Operation",
+                        "path": "/report/operation/loan-operation",
+                        "icon": "fa fa-circle-o"
+                    },
+                    {
+                        "navTitle": "Loan Repayment",
+                        "path": "/report/operation/loan-repayment",
+                        "icon": "fa fa-circle-o"
+                    },
+                    {
+                        "navTitle": "Platform Statistics Data",
+                        "path": "/report/operation/platform-statistics-data",
+                        "icon": "fa fa-circle-o"
+                    },
+                    {
+                        "navTitle": "Platform Statistics Data Aggregation",
+                        "path": "/report/operation/platform-statistics-data-aggregation",
+                        "icon": "fa fa-circle-o"
+                    },
+                    {
+                        "navTitle": "Loan Overdue",
+                        "path": "/report/operation/loan-overdue",
+                        "icon": "fa fa-circle-o"
+                    },
+                    {
+                        "navTitle": "Customer Invite Detail",
+                        "path": "/report/operation/customer-invite-detail",
+                        "icon": "fa fa-circle-o"
+                    },
+                    {
+                        "navTitle": "Conversion Statistics",
+                        "path": "/report/operation/conversion-statistics",
+                        "icon": "fa fa-circle-o"
+                    },
+                    {
+                        "navTitle": "Review Efficiency",
+                        "path": "/report/operation/review-efficiency",
+                        "icon": "fa fa-circle-o"
+                    },
+                    {
+                        "navTitle": "Review History",
+                        "path": "/report/operation/review-history",
+                        "icon": "fa fa-circle-o"
+                    },
+                    {
+                        "navTitle": "Review Monitor",
+                        "path": "/report/operation/review-monitor",
+                        "icon": "fa fa-circle-o"
+                    },
                     {
                         "navTitle": "Feedback Summary",
                         "path": "/report/operation/feedback-summary",
@@ -266,8 +324,8 @@
                 "navTitle": "Risk report",
                 "path": "/report",
                 "hasThreeNav": false,
-                "icon": "fa fa-circle-o",
-                "index": "7-3"
+                "icon": "fa fa-table",
+                "index": "6-3"
             }
             
         ]

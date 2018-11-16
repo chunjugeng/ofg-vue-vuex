@@ -1,18 +1,24 @@
 import cfgNavRoute from '~/config/nav-route.json';
-const nav = {
+import {calculateClientWidth} from '~/utils/helper';
+const type = {
     CHANGENAV: 'CHANGENAV',
-    TOGGLENAV: 'TOGGLENAV'
+    TOGGLENAV: 'TOGGLENAV',
+    CALCULATETABLEW: 'CALCULATETABLEW'
 };
 export default {
+    namespaced: true,
     state: {
+        tableW: 0,
         navRoute: cfgNavRoute,
     },
-
     mutations: {
-        [nav.CHANGENAV](state, payload) {
-            return state;
+        [type['CALCULATETABLEW']](state, w) {
+            state.tableW = w;
         },
-        [nav.TOGGLENAV](state, payload) {
+        [type['CHANGENAV']](state, index) {
+            state.currIndex = index;
+        },
+        [type['TOGGLENAV']](state, payload) {
             const {secondIndex, threeId} = payload;
             state.navRoute[secondIndex].isShow = !state.navRoute[secondIndex].isShow;
             state.navRoute[secondIndex].list[threeId] = !state.navRoute[secondIndex].list[threeId];
@@ -21,11 +27,15 @@ export default {
     },
 
     actions: {
-        changeNav({commit}) {
-            commit(nav.CHANGENAV);
+        calculateClientWidth({commit}, isCollapse) {
+            let w = calculateClientWidth(isCollapse);
+            commit(type['CALCULATETABLEW'], w)
+        },
+        changeNav({commit}, index) {
+            commit(type['CHANGENAV'], index);
         },
         toggleNav({commit}, payload) {
-            commit(nav.TOGGLENAV, payload);
+            commit(type['TOGGLENAV'], payload);
         }
     }
 }

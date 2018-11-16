@@ -127,7 +127,6 @@
 
 <script>
     import {mapState} from 'vuex';
-    import {calculateClientWidth} from '~/utils/helper';
     import Loading from '~/common/Loading.vue';
     import Pager from '~/common/PagerCom.vue';
     import BaseSearch from './BaseSearch.vue';
@@ -139,7 +138,7 @@
         data() {
             return {
                 pageSize: 10,
-                tableW: '',
+                // tableW: '',
                 depositThead: ['Deposit Id', 'Application Id', 'Customer Name', 'Customer mobile', 'Ktp Number', 'Deposit Status', 'Payment Code', 'Deposit Amount', 'Arrived Amount', 'Cleared Amount', 'Extension Nums', 'Deposit Channel', 'Deposit Methods', 'Create Time'],
                 loanThead: ['Loan Issue ID', 'Application Id', 'Customer Name', 'Customer mobile', 'Ktp Number', 'Issue Status', 'Issue Amount', 'Actual Amount', 'Reached Amount', 'Duration', 'Out Transaction ID', 'Issue Method', 'Card Number', 'Account Holder Name', 'Bank Code', 'Verify Status', 'Create Time', 'Expire Time'],
                 bonusThead: ['Bonus Issue ID', 'Customer Name', 'Customer Mobile', 'KTP Number', 'Issue Status', 'Amount', 'Actual Amount', 'Reached Amount', 'Out Transaction ID', 'Issue Method', 'Card Number', 'Account Holder Name', 'Deposit MethodBank Codes', 'Create Time', 'Update Time']
@@ -151,13 +150,13 @@
                 loading: state=> state.loading,
                 pager: state=> state.pager,
                 tableList: state=> state.tableList
+            }),
+            ...mapState('nav', {
+                tableW: state=>state.tableW
             })
         },
     
         methods: {
-            scrollTableW() {
-                this.tableW = calculateClientWidth();
-            },
             customPageSize() {
                 this.$store.dispatch('finance/customPageSize', {
                     type: this.type,
@@ -176,13 +175,11 @@
         
         mounted() {
             const that = this;
-            this.scrollTableW();
-            
+            this.$store.dispatch('nav/calculateClientWidth');
             window.onresize = function() {
-                that.scrollTableW();
+                that.$store.dispatch('nav/calculateClientWidth');
             };
 
-            
             this.$store.dispatch('finance/init', {
                 pageSize: this.pageSize,
                 type: this.type

@@ -10,13 +10,13 @@ import Finance from './finance';
 import Application from './application';
 import Collection from './collection';
 import System from './system';
-import SystemReport from './systemReport';
+import SystemReport from './system-report';
 
 
 import Pager from './pager';
 
 
-import nav from './nav';
+import Nav from './nav';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -25,7 +25,7 @@ export default new Vuex.Store({
         customer: Customer,
         finance: Finance,
         application: Application,
-        nav: nav,
+        nav: Nav,
         pager: Pager,
         collection: Collection,
         system: System,

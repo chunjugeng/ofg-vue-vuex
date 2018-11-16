@@ -92,7 +92,7 @@ const config = {
             },
             {
                 test: /\.(eot|ttf|otf|woff|woff2)$/,
-                loader: {
+                use: {
                     loader: 'url-loader',
                     options: {
                         name: './fonts/[name].[ext]',

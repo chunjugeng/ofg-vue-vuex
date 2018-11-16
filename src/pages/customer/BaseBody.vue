@@ -114,7 +114,6 @@
 
 <script>
     import {mapState} from 'vuex';
-    import {calculateClientWidth} from '~/utils/helper';
     import Loading from '~/common/Loading.vue';
     import Pager from '~/common/PagerCom.vue';
     import BaseSearch from './BaseSearch.vue';
@@ -126,7 +125,6 @@
         data() {
             return {
                 pageSize: 10,
-                tableW: '',
                 allThead: ['Customer Id', 'Real Name', 'Mobile', 'Status', 'Register Time'],
                 smsThead: ['Id', 'Chanel', 'Mobile', 'Code', 'Status', 'Create Time', 'Trigger'],
                 mobile: ['Name', 'Email', 'Mobile', 'Last Update Time'],
@@ -138,13 +136,13 @@
                 loading: state=> state.loading,
                 pager: state=> state.pager,
                 customerList: state=> state.customerList
+            }),
+            ...mapState('nav', {
+                tableW: state=> state.tableW
             })
         },
     
         methods: {
-            scrollTableW() {
-                this.tableW = calculateClientWidth();
-            },
             customPageSize() {
                 this.$store.dispatch('customer/customPageSize', this.pageSize);
             },
@@ -155,9 +153,9 @@
         
         mounted() {
             const that = this;
-            this.scrollTableW();
+            this.$store.dispatch('nav/calculateClientWidth');
             window.onresize = function() {
-                that.scrollTableW();
+                that.$store.dispatch('nav/calculateClientWidth');
             };
 
             this.$store.dispatch('customer/init', this.pageSize);

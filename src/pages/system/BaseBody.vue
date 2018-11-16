@@ -98,7 +98,6 @@
 
 <script>
     import {mapState} from 'vuex';
-    import {calculateClientWidth} from '~/utils/helper';
     import Loading from '~/common/Loading.vue';
     import Pager from '~/common/PagerCom.vue';
     export default {
@@ -110,7 +109,6 @@
         data() {
             return {
                 pageSize: 10,
-                tableW: '',
                 inviteThead: ['Setting ID', 'Key', 'Value', 'UpdateTime', 'CreateTime'],
                 diversionThead: ['Setting ID', 'Name', 'Logo', 'Score', 'Download Url', 'Amount', 'Download Url', 'Interest', 'Review Time', 'Sort Num', 'Status', 'UpdateTime', 'CreateTime'],
             }
@@ -121,13 +119,13 @@
                 loading: state=> state.loading,
                 pager: state=> state.pager,
                 settingList: state=> state.settingList
+            }),
+            ...mapState('nav', {
+                tableW: state=> state.tableW
             })
         },
     
         methods: {
-            scrollTableW() {
-                this.tableW = calculateClientWidth();
-            },
             customPageSize() {
                 this.$store.dispatch('system/customPageSize', this.pageSize);
             },
@@ -138,9 +136,9 @@
         
         mounted() {
             const that = this;
-            this.scrollTableW();
+            this.$store.dispatch('nav/calculateClientWidth');
             window.onresize = function() {
-                that.scrollTableW();
+                that.$store.dispatch('nav/calculateClientWidth');
             };
 
             this.$store.dispatch('system/init', this.pageSize);

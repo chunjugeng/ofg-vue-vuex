@@ -1,10 +1,44 @@
 <template>
     <div class="page-content">
         <div class="search">
-            <h1 v-if="title">{{title}}</h1>
+            <h1 v-if="parent.title">{{parent.title}}</h1>
             <div>
                 <h5>search</h5>
                 <div class="search-com">
+                    <template v-if="type==='LOANISSUE'">
+                        <div class="default">
+                            <span class="fa fa-info"/>
+                            <input type="text" name="applicationId" placeholder="Application ID"/>
+                        </div>
+                        <div class="default">
+                            <span class="fa fa-phone"/>
+                            <input type="text" name="customerMobile" placeholder="Customer Mobile"/>
+                        </div>
+                        <div class="default select">
+                            <span>Loan Type</span>
+                            <select>
+                                <option></option>
+                                <option v-for="item of LoanType">{{item}}</option>
+                            </select>
+                        </div>
+                        <div class="default select">
+                            <span>Loan Status</span>
+                            <select>
+                                <option></option>
+                                <option v-for="item of LoanStatus">{{item}}</option>
+                            </select>
+                        </div>
+                        <div class="default">
+                            <span class="fa fa-info"/>
+                            <input type="text" name="loanIssueId" placeholder="Loan Issue ID"/>
+                        </div>
+                        <div class="default">
+                            <span class="fa fa-info"/>
+                            <input type="text" name="ktpNumber" placeholder="KTP Number"/>
+                        </div>
+                        
+                        <div> date </div>
+                    </template>
                     <template v-if="type==='BONUSISSUE'">
                         <div class="default">
                             <span class="fa fa-phone"/>
@@ -39,6 +73,41 @@
                         <div class="default">
                             <span class="fa fa-info"/>
                             <input type="text" name="ktpNumber" placeholder="KTP Number"/>
+                        </div>
+                    </template>
+
+                    <template v-if="type==='LOANDEPOSIT'">
+                        <div class="default">
+                            <span class="fa fa-info"/>
+                            <input type="text" name="applicationId" placeholder="Application ID"/>
+                        </div>
+                        <div class="default">
+                            <span class="fa fa-mobile"/>
+                            <input type="text" name="customerMobile" placeholder="Customer Mobile"/>
+                        </div>
+                        <div class="default select">
+                            <span>Status</span>
+                            <select>
+                                <option></option>
+                                <option>A</option>
+                                <option>B</option>
+                            </select>
+                        </div>
+
+                        <div :style="{'display': 'block', 'width':  '100%'}">date</div>
+
+                        <div class="default">
+                            <span class="fa fa-info"/>
+                            <input type="text" name="loanDepositId" placeholder="Loan Deposit ID"/>
+                        </div>
+                        <div class="default">
+                            <span class="fa fa-info"/>
+                            <input type="text" name="ktpNumber" placeholder="KTP Number"/>
+                        </div>
+
+                        <div class="default extension">
+                            <span>Extension Nums</span>
+                            <input type="text" name="extensionNums" placeholder="Extension Nums"/>
                         </div>
                     </template>
 
@@ -87,50 +156,14 @@
                 </div>
             </div>
 
-            <div class="table-content" :style="{'width': tableW, 'overflow-x': 'auto'}" v-if="type==='BONUSISSUE'">
+            <div class="table-content" :style="{'width': tableW, 'overflow-x': 'auto'}">
                 <table>
                     <thead>
                         <tr>
                             <th v-for="item of parent.tableThead">{{item}}</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr v-for="item in tableList" :key="item._id">
-                            <td>sasasa</td>
-                            <td>{{item._id}}</td>
-                            <td>xxxxxx</td>
-                            <td>{{item.validTime}}</td>
-                            <td>{{item.modifyDate}}</td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="table-content" :style="{'width': tableW, 'overflow-x': 'auto'}" v-if="type==='FEEDBACKSUMMARY'">
-                <table>
-                   <thead>
-                        <tr>
-                            <th v-for="item of feedbackSummaryThead">{{item}}</th>
-                        </tr>
-                    </thead>
-                    <tbody >
-                        <tr v-for="item in tableList" :key="item._id">
-                            <td>sasasa</td>
-                            <td>{{item.hot}}</td>
-                            <td>{{item.modifyDate}}</td>
-                            <td>{{item.hot}}</td>
-                            <td>{{item.modifyDate}}</td>
-                            <td>{{item.modifyDate | dateFormat}}</td>
-                            <td>{{item.modifyDate | money(2)}}</td>
-                            <td>{{item.modifyDate | money(2)}}</td>
-                            <td>{{item.hot}}</td>
-                            <td>{{item.createDate | dateFormat}}</td>
-                            <td>{{item.modifyDate | dateFormat}}</td>
-                            <td>{{item.modifyDate | money(2)}}</td>
-                            <td>{{item.modifyDate | money(2)}}</td>
-                        </tr>
-                    </tbody>
+                    <slot></slot>
                 </table>
             </div>
             <div v-if="JSON.stringify(tableList) === '[]'" :style="{'padding': '15px 0','text-align': 'center'}" class="no-record">no record</div>
@@ -140,30 +173,30 @@
 
 <script>
     import {mapState} from 'vuex';
-    import {IssueMethod, IssueStatus} from '~/utils/selectType';
+    import {IssueMethod, IssueStatus, LoanType, LoanStatus} from '~/utils/selectType';
     import Loading from '~/common/Loading.vue';
     import Pager from '~/common/PagerCom.vue';
     export default {
         props: [
             'parent',
-            'title',
             'type',
         ],
         data() {
             return {
                 IssueStatus,
                 IssueMethod,
+                LoanType,
+                LoanStatus,
                 pageSize: 10,
-                bonusThead: ['Setting ID', 'Key', 'Value', 'UpdateTime', 'CreateTime'],
                 feedbackSummaryThead: ['Setting ID', 'Name', 'Logo', 'Score', 'Download Url', 'Amount', 'Download Url', 'Interest', 'Review Time', 'Sort Num', 'Status', 'UpdateTime', 'CreateTime'],
             }
         },
 
         computed: {
-            ...mapState('systemReport', {
+            ...mapState('systemReport/finance', {
                 loading: state=> state.loading,
                 pager: state=> state.pager,
-                tableList: state=> state.settingList
+                tableList: state=> state.tableList
             }),
             ...mapState('nav', {
                 tableW: state=> state.tableW
@@ -172,7 +205,7 @@
     
         methods: {
             customPageSize() {
-                this.$store.dispatch('systemReport/customPageSize', {
+                this.$store.dispatch('systemReport/finance/customPageSize', {
                     pageSize: this.pageSize,
                     type: this.type
                 });
@@ -183,7 +216,7 @@
                     type: this.type,
                     page
                 };
-                this.$store.dispatch('systemReport/changePage', params);
+                this.$store.dispatch('systemReport/finance/changePage', params);
             }
         },
         
@@ -194,7 +227,7 @@
                 that.$store.dispatch('nav/calculateClientWidth');
             };
 
-            this.$store.dispatch('systemReport/init', {
+            this.$store.dispatch('systemReport/finance/init', {
                 pageSize: this.pageSize,
                 type: this.type
             });

@@ -16,9 +16,10 @@ export function countPage(params) {
     return totalRecords % pageSize === 0 ? totalRecords / pageSize : ~~(totalRecords / pageSize) + 1;
 }
 
-export function calculateClientWidth() {
+export function calculateClientWidth(isCollapse) {
     const clientWidth = document.body.clientWidth || document.documentElement.clientWidth;
     const pad = 50;
-    const flexNav = 230;
+    const flexNav = isCollapse ? 64 : 230;
+    
     return (clientWidth - pad - flexNav) + 'px';
 }
