@@ -50,4 +50,6 @@ const PartRepayStatus = ['WAIT_FOR_DEPOSIT', 'SUCCESS', 'TIME_OUT'];
 const CustomerType = ['ALL', 'NEW', 'OLD'];
 const IssueStatus = ['CREATED', 'PENDING', 'SUCCEED', 'FAILED'];
 const IssueMethod = ['XENDIT', 'BLUEPAY', 'OTHERS'];
-export {LoanType, LoanStatus, ReviewStatus, PartRepayStatus, CustomerType, IssueStatus, IssueMethod};
+const Group = ['ROOT', 'OPERATION', 'FINANCE', 'RISK', 'REVIEW_TEAM', 'COLLECTION_TEAM', 'CUSTOMER_SERVICE_TEAM'];
+const Role = ['admin', 'first reviewer', 'final reviewer', 'finance', 'operation', 'risk', 'second reviewer', 'marketing manager', 'customer service', 'review manager', 'collection assistant', 'collection group leader', 'second reviewer pinjaman'];
+export {LoanType, LoanStatus, ReviewStatus, PartRepayStatus, CustomerType, IssueStatus, IssueMethod, Group, Role};

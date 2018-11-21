@@ -133,6 +133,13 @@
             &[disabled] {
                 background-color: #e4e4e4;
             }
+
+            &.blue {
+                background-color: #3079ae;
+                &:hover {
+                    background-color: #2b6b98;
+                }
+            }
         }
     }
 }

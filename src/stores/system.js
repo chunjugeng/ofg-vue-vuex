@@ -1,7 +1,8 @@
 import {countPage} from '~/utils/helper';
 import systemService from '~/service/system';
+import { cpus } from 'os';
 const type = {
-    INIT: 'INIT',
+    UPDATETABLELIST: 'UPDATETABLELIST',
     CALCULATEPAGE: 'CALCULATEPAGE',
     CUSTOMPAGESIZE: 'CUSTOMPAGESIZE'
 };
@@ -21,7 +22,7 @@ export default {
             totalPage: 0
         },
 
-        settingList: []
+        tableList: []
     },
     mutations: {
         [type['CUSTOMPAGESIZE']](state, pageSize) {
@@ -38,39 +39,22 @@ export default {
             state.pager.totalRecords = totalRecords;
             state.pager.totalPage = totalPage;
         },
-        [type['INIT']](state, list) {
-            state.settingList = list;
+        [type['UPDATETABLELIST']](state, list) {
+            state.tableList = list;
         }
     },
     actions: {
-        querySettingList({state}, page) {
-            const params = {
-                page: page || state.pager.page,
-                pageSize: state.pager.pageSize,
-                type: 'media-report',
-                platform: 'desktop'
-            };
-            return systemService.loadCustomer(params);
-        },
-
-        async customPageSize({commit, dispatch, state}, pageSize) {
+        customPageSize({commit}, pageSize) {
             commit(type['CUSTOMPAGESIZE'], pageSize);
-            await dispatch('changePage');
-            dispatch('initPage', state.pager, {root: true});
         },
-        async changePage({commit, dispatch}, page) {
-            const res = await dispatch('querySettingList', page);
+        changePage({commit}, list) {
+            commit(type['UPDATETABLELIST'], list);
+        },
+        init({commit, dispatch, state}, res) {
             commit(type['CALCULATEPAGE'], res.totalRecords);
-            commit(type['INIT'], res.list);
-        },
-
-        async init({commit, dispatch, state, rootState}, pageSize) {
-            // commit(type['CUSTOMPAGESIZE'], pageSize);
-            // const res = await dispatch('querySettingList');
-            // commit(type['CALCULATEPAGE'], res.totalRecords);
-            // commit(type['INIT'], res.list);
-            await dispatch('customPageSize', pageSize);
+            commit(type['UPDATETABLELIST'], res.list);
             
+            dispatch('initPage', state.pager, {root: true});
         }
 
     }

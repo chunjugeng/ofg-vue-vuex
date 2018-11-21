@@ -29,7 +29,12 @@ import ReducePaymentManagement from '~/pages/collection/repayment-management/Red
 
 
 //system management
+import SystemAdminManagement from '~/pages/system/Admin.vue';
+import SystemBlacklistManagement from '~/pages/system/BlackList.vue';
+import SystemWhiteListManagement from '~/pages/system/WhiteList.vue';
+import SystemSettingManagement from '~/pages/system/Setting.vue';
 import InviteSettingManagement from '~/pages/system/Invite.vue';
+import ReviewReasonManagement from '~/pages/system/Reason.vue';
 import DiversionManagement from '~/pages/system/Diversion.vue';
 
 //system report
@@ -158,8 +163,28 @@ const router = new VueRouter({
 
                 //system management
                 {
+                    path: '/system/admin',
+                    component: SystemAdminManagement
+                },
+                {
+                    path: '/system/blacklist',
+                    component: SystemBlacklistManagement
+                },
+                {
+                    path: '/system/whitelist',
+                    component: SystemWhiteListManagement
+                },
+                {
+                    path: '/system/setting',
+                    component: SystemSettingManagement
+                },
+                {
                     path: '/system/invite',
                     component: InviteSettingManagement
+                },
+                {
+                    path: '/system/reason',
+                    component: ReviewReasonManagement
                 },
                 {
                     path: '/system/diversion',

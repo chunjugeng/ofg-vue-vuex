@@ -79,8 +79,6 @@
             window.onresize = function() {
                 that.$store.dispatch('nav/calculateClientWidth');
             };
-
-            console.log(this.pager, 'pager')
             this.init();
         },
         components: {

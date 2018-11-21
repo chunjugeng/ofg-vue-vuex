@@ -23,7 +23,7 @@
                     </ul>
                 </div>
             </header>
-            <aside class="flex-nav"  >
+            <aside >
                 <div class="nav" :style="{'width': !isCollapse ? '230px' : '64px'}">
                     <template>
                         <el-menu :unique-opened="true" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse" background-color="#222d32"  :collapse-transition="false" :default-active="currIndex +'-1'" active-text-color="#fff">
