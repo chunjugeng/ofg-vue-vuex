@@ -175,9 +175,9 @@
         
         mounted() {
             const that = this;
-            this.$store.dispatch('nav/calculateClientWidth');
+            this.$store.dispatch('nav/calculateTableW');
             window.onresize = function() {
-                that.$store.dispatch('nav/calculateClientWidth');
+                that.$store.dispatch('nav/calculateTableW');
             };
 
             this.$store.dispatch('finance/init', {

@@ -123,7 +123,6 @@
 
 <script>
     import {mapState} from 'vuex';
-    import {calculateClientWidth} from '~/utils/helper';
     import Search from './BaseSearch.vue';
     import Pager from '~/common/PagerCom.vue';
     import Loading from '~/common/Loading.vue';
@@ -132,7 +131,6 @@
         data() {
             return {
                 pageSize: 10,
-                tableW: '',
                 firstThead: ['Application ID', 'Customer Name', 'Customer Mobile', 'Duration', 'Amount', 'Loan Type', 'Create Time<span class="fa fa-info"/>', 'Loan Status', 'Extension Nums', 'Issue Success Time', 'Reviewer'],
                 secondThead: ['Application ID', 'Customer Name', 'Customer Mobile', 'Duration', 'Amount', 'Loan Type', 'Create Time<span class="fa fa-info"/>', 'Loan Status'],
                 finalThead: ['Application ID', 'Customer Name', 'Customer Mobile', 'Duration', 'Amount', 'Loan Type', 'Create Time<span class="fa fa-info"/>', 'Loan Status'],
@@ -144,6 +142,9 @@
                 loading: state=> state.loading,
                 pager: state=> state.pager,
                 tableList: state=> state.tableList
+            }),
+            ...mapState('nav', {
+                tableW: state=> state.tableW
             })
         },
         methods: {
@@ -152,16 +153,14 @@
             },
             changePage(page) {
                 this.$store.dispatch('application/myReviewCases/changePage', page)
-            },
-            scrollTableW() {
-                this.tableW = calculateClientWidth();
-            },
+            }
         },
+        
         mounted() {
             const that = this;
-            this.scrollTableW();
+            this.$store.dispatch('nav/calculateTableW');
             window.onresize = function() {
-                that.scrollTableW();
+                this.$store.dispatch('nav/calculateTableW');
             };
             this.$store.dispatch('application/myReviewCases/init', this.pageSize);
         },

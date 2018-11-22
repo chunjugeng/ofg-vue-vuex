@@ -32,7 +32,6 @@
                     />
                 </div>
             </div>
-
             <div class="table-content" :style="{'width': tableW, 'overflow-x': 'auto'}" v-if="type==='ALL'">
                 <table>
                     <thead>
@@ -42,7 +41,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="item in customerList" :key="item._id">
-                            <td>sasasa</td>
+                            <td ><a :href="'#/customer/customer-detail?customerId=' + item._id">{{item._id}}</a></td>
                             <td>{{item._id}}</td>
                             <td>xxxxxx</td>
                             <td>{{item.validTime}}</td>
@@ -148,18 +147,24 @@
             },
             changePage(page) {
                 this.$store.dispatch('customer/changePage', page);
+            },
+            queryCustomerIdInfo(customerId) {
+                
             }
         },
         
         mounted() {
             const that = this;
-            this.$store.dispatch('nav/calculateClientWidth');
+            this.$store.dispatch('nav/calculateTableW');
             window.onresize = function() {
-                that.$store.dispatch('nav/calculateClientWidth');
+                that.$store.dispatch('nav/calculateTableW');
             };
 
             this.$store.dispatch('customer/init', this.pageSize);
             
+        },
+        updated() {
+            console.log()
         },
         components: {
             Loading,

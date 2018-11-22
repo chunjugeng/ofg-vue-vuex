@@ -5,12 +5,15 @@ import Login from '~/pages/login/Login.vue';
 import All from '~/pages/customer/All.vue';
 import Sms from '~/pages/customer/Sms.vue';
 import PhoneRecord from '~/pages/customer/PhoneRecord.vue';
+import CustomerDetail from '~/pages/customer/CustomerDetail.vue';
 
 import Deposits from '~/pages/finance/Deposits.vue';
 import LoanIssue from '~/pages/finance/LoanIssue.vue';
 import BonusIssues from '~/pages/finance/BonusIssues.vue';
+import FinanceLogs from '~/pages/finance/Logs.vue';
 
 import AllReviewCases from '~/pages/application/AllReviewCases.vue';
+import ApplicationReviewDetail from '~/pages/application/ReviewDetail.vue';
 import AllReviewTasks from '~/pages/application/AllReviewTasks.vue';
 import CaseAssignmentFirstReview from '~/pages/application/case-assignment/First.vue';
 import CaseAssignmentSecondReview from '~/pages/application/case-assignment/Second.vue';
@@ -91,6 +94,10 @@ const router = new VueRouter({
                     path: '/customer/phone-record',
                     component: PhoneRecord
                 },
+                {
+                    path: '/customer/customer-detail',
+                    component: CustomerDetail
+                },
                 //finance
                 {
                     path: '/finance/deposit',
@@ -104,10 +111,18 @@ const router = new VueRouter({
                     path: '/finance/bonus-issues',
                     component: BonusIssues
                 },
+                {
+                    path: '/finance/logs',
+                    component: FinanceLogs
+                },
                 //application
                 {
                     path: '/application/all-review-cases',
                     component: AllReviewCases
+                },
+                {
+                    path: '/review/review-detail',
+                    component: ApplicationReviewDetail
                 },
                 {
                     path: '/application/all-review-tasks',

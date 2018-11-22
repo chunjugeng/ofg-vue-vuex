@@ -37,9 +37,11 @@
         border-collapse: collapse;
 
         thead {
+            background-color: rgba(240, 251, 240, 0.4);
             tr {
                 th {
-                    padding: 8px 5px;
+                    padding: 20px 8px;
+                    font-weight: 400;
                 }
             }
         }

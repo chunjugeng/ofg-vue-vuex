@@ -1,84 +1,85 @@
 <template>
     <div class="wrapper app">
-        <div class="flex-nav">
-            <header class="top-nav">
-                <div class="collapse-btn">
-                    <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-                        <el-radio-button :label="false">展开</el-radio-button>
-                        <el-radio-button :label="true">收起</el-radio-button>
-                    </el-radio-group>
-                </div>
+        <header class="top-nav">
+            <div class="collapse-btn">
+                <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
+                    <el-radio-button :label="false">展开</el-radio-button>
+                    <el-radio-button :label="true">收起</el-radio-button>
+                </el-radio-group>
+            </div>
 
-                <div class="navbar-nav">
-                    <ul>
-                        <li class="reset-password">
-                            <a ><i class="fa fa-adjust"/>Reset Password</a>
-                        </li>
-                        <li class="active">
-                            <a><i class="fa fa-user"/>ACTIVE</a>
-                        </li>
-                        <li class="sign-out">
-                            <a><i class="fa fa-sign-out"/>Reset Password</a>
-                        </li>
-                    </ul>
-                </div>
-            </header>
-            <aside >
-                <div class="nav" :style="{'width': !isCollapse ? '230px' : '64px'}">
-                    <template>
-                        <el-menu :unique-opened="true" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse" background-color="#222d32"  :collapse-transition="false" :default-active="currIndex +'-1'" active-text-color="#fff">
-                            <div class="logo">
-                                <img src="../images/logo.jpg"/>
+            <div class="navbar-nav">
+                <ul>
+                    <li class="reset-password">
+                        <a><i class="fa fa-adjust" />Reset Password</a>
+                    </li>
+                    <li class="active">
+                        <a><i class="fa fa-user" />ACTIVE</a>
+                    </li>
+                    <li class="sign-out">
+                        <a><i class="fa fa-sign-out" />Reset Password</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <div class="flex-nav">
+            <div class="nav" :style="{'width': !isCollapse ? '230px' : '64px'}">
+                <template>
+                    <el-menu :unique-opened="true" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
+                        :collapse="isCollapse" background-color="#222d32"  :default-active="defaultActiveIndex"
+                        active-text-color="#fff"
+                        :collapse-transition="false"
+                        >
+                        <div class="logo">
+                            <img src="../images/logo.jpg" />
+                        </div>
+                        <h5 v-show="!isCollapse">management</h5>
+                        <el-submenu v-for="(item, index) in navRoute" :key="item.index" :index="item.index" :class="{'parentActive': index === currIndex}">
+                            <div slot="title">
+                                <i :class="item.icon" />
+                                <span slot="title" @click="changeNav(index)">{{item.navTitle}}</span>
                             </div>
-                            <h5 v-show="!isCollapse">management</h5>
-                            <el-submenu v-for="(item, index) in navRoute" :key="item.index" :index="item.index" :class="{'parentActive': item.index === currIndex}">
-                                <template slot="title">
-                                    <span slot="title" @click="changeNav(item.index)"><i :class="item.icon"/>{{item.navTitle}}</span>
-                                </template>
-                                
-                                <template v-for="(v, n) in item.list" >
-                                    <el-submenu v-if="v.hasThreeNav" :index="v.index">
-                                        <span slot="title">
-                                            <i :class="v.icon"/>
-                                            {{v.navTitle}}
-                                        </span>
-                                        <el-menu-item :index="v.index" class="marginL10" v-for="(l, id) in v.list" :key="id" >
-                                            <router-link :to="l.path"><i v-if="l.icon" :class="l.icon"/>{{l.navTitle}}</router-link>
-                                        </el-menu-item>
-                                    </el-submenu>
-                                    <el-menu-item :index="v.index" v-else>
-                                        
-                                        <router-link :to="v.path"><i :class="v.icon"/>{{v.navTitle}}</router-link>
-                                        
+
+                            <template v-for="(v, n) in item.list">
+                                <el-submenu v-if="v.hasThreeNav" :index="v.index" class="second-nav">
+                                    <span slot="title">
+                                        <i :class="v.icon" />
+                                        {{v.navTitle}}
+                                    </span>
+                                    <el-menu-item :index="l.index" class="three-nav" v-for="(l, id) in v.list" :key="id">
+                                        <router-link :to="l.path">{{l.navTitle}}</router-link>
                                     </el-menu-item>
-                                </template>
-                            </el-submenu>
-                        </el-menu>
-                    </template>
-                </div>
-            </aside>
+                                </el-submenu>
+                                <el-menu-item :index="v.index" v-else class="second-nav">
+                                    <router-link :to="v.path" ><i :class="v.icon" />{{v.navTitle}}</router-link>
+
+                                </el-menu-item>
+                            </template>
+                        </el-submenu>
+                    </el-menu>
+                </template>
+            </div>
         </div>
 
-        <div class="flex-content">
+        <div class="flex-content" :style="{'marginLeft': !isCollapse ? '230px' : '64px'}">
             <router-view></router-view>
         </div>
     </div>
 </template>
-
-
-
 <script>
     import {mapState} from 'vuex';
     export default {
         data() {
             return {
                 isCollapse: false,
-                currIndex: 0
+                currIndex: 0,
+                defaultActiveIndex: ''
             }
         },
         computed: {
             ...mapState('nav', {
                 navRoute: state=> state.navRoute,
+                tableW: state=> state.tableW
             })
         },
         methods: {
@@ -94,15 +95,30 @@
             init(url) {
                 this.navRoute.map(nav=> {
                     if (url.indexOf(nav.parentPath) > 0) {
-                        this.currIndex = nav.index;
+                        this.currIndex = nav.index -1;
                     }
+
+                    nav.list.map(item => {
+                        const subStr = url.substr(url.indexOf('#') +1);
+                        if (subStr === item.path) {
+                            return this.defaultActiveIndex = item.index;
+                        }
+                        item.hasThreeNav && item.list.map(data=> {
+                            if (data.path === subStr) {
+                                return this.defaultActiveIndex = data.index;
+                            }
+                        })
+                        
+                    })
                 });
+
+                
             }
         },
 
         watch: {
             isCollapse() {
-                this.$store.dispatch('nav/calculateClientWidth', this.isCollapse);
+                this.$store.dispatch('nav/calculateTableW', this.isCollapse);
             }
         },
         created() {
@@ -110,7 +126,6 @@
             this.init(url);
         },
         mounted() {
-            console.log(this.$parent,  'parent');
         },
         components: {
         },
@@ -121,16 +136,19 @@
     @import '~/styles/page-content.scss';
     @import '~/styles/table-com.scss';
     @import '~/styles/search.scss';
+    @import '~/styles/info-input.scss';
     .app {
         .flex-nav {
             .fa:before {margin-right: 5px;}
             font-weight: 400;
             background-color: #222d32;
+            position: fixed;
+            top: 0;
+            height: 100%;
+            overflow-y: scroll;
+            z-index: 99998;
             
             .nav {
-                background-color: #222d32;
-                position: relative;
-                z-index: 99999;
                 .logo {
                     margin-top: 50px;
                     padding-left: 10px;
@@ -160,6 +178,7 @@
         height: 50px;
         line-height: 50px;
         text-align: right;
+        box-shadow: 1px 1px 1px #4aa783;
         .collapse-btn {
             position: absolute;
             top: 0;
@@ -189,16 +208,25 @@
     }
     .el-menu {border-right: none !important;}
     .el-menu-vertical-demo, .el-menu--vertical {
-        .marginL10 {
-            a {padding-left: 8px !important;}
+        .second-nav {
+            padding: 0 !important;
+            & > a {
+                padding-left: 28px !important;
+            }
+            .el-submenu__title {
+                padding-left: 25px !important;
+            }
+        }
+        .three-nav {
+            &.el-menu-item {
+                padding: 0 40px !important;
+            }
         }
 
         li {
             .el-submenu__title {
                 height:  40px !important;
                 line-height: 40px !important;
-                padding-left: 15px !important;
-                
             }
             a.router-link-exact-active {
                 color: white !important;
@@ -216,7 +244,6 @@
             &.el-menu-item {
                 height: 35px !important;
                 line-height: 35px !important;
-                padding: 0 20px !important;
                 
                 &:hover {
                    span, i, a {

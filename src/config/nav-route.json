@@ -93,17 +93,20 @@
                     {
                         "navTitle": "First Review Assignment",
                         "path": "/application/case-assignment/first-review",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "3-3-1"
                     },
                     {
                         "navTitle": "Second Review Assignment",
                         "path": "/application/case-assignment/second-review",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "3-3-2"
                     },
                     {
                         "navTitle": "Final Review Assignment",
                         "path": "/application/case-assignment/final-review",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "3-3-3"
                     }
                 ]
             },
@@ -117,22 +120,26 @@
                     {
                         "navTitle": "First Review Assignment",
                         "path": "/application/my-review-cases/first",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "3-4-1"
                     },
                     {
                         "navTitle": "Second Review Assignment",
                         "path": "/application/my-review-cases/second",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "3-4-2"
                     },
                     {
                         "navTitle": "Final Review Assignment",
                         "path": "/application/my-review-cases/final",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "3-4-3"
                     }, 
                     {
                         "navTitle": "Review History Cases",
                         "path": "/application/my-review-cases/review-history",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "3-4-4"
                     }
                 ]
             },
@@ -147,7 +154,8 @@
                     {
                         "navTitle": "Final Review Efficiency",
                         "path": "/application/final-review-efficiency",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "3-5-1"
                     }
                 ]
             }
@@ -169,7 +177,6 @@
                 "hasThreeNav": false,
                 "icon": "fa fa-circle-o",
                 "index": "4-1"
-                
             },
             {
                 "navTitle": "Repayment Management",
@@ -183,15 +190,14 @@
                         "path": "/collection/part-repay-management",
                         "hasThreeNav": false,
                         "icon": "fa fa-circle-o",
-                        "index": "4-1-1"
-                        
+                        "index": "4-2-1"
                     },
                     {
                         "navTitle": "Reduce Repay Management",
                         "path": "/collection/reduce-repay-management",
                         "hasThreeNav": false,
                         "icon": "fa fa-circle-o",
-                        "index": "4-1-2"
+                        "index": "4-2-2"
                         
                     }
                 ]
@@ -276,17 +282,20 @@
                     {
                         "navTitle": "Loan Issue",
                         "path": "/report/finance/loan-issue",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "6-1-1"
                     },
                     {
                         "navTitle": "Bonus Issue",
                         "path": "/report/finance/bonus-issue",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "6-1-2"
                     },
                     {
                         "navTitle": "Loan Deposit",
                         "path": "/report/finance/loan-deposit",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "6-1-3"
                     }
                 ]
             },
@@ -300,57 +309,68 @@
                     {
                         "navTitle": "Loan Operation",
                         "path": "/report/operation/loan-operation",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "6-2-1"
                     },
                     {
                         "navTitle": "Loan Repayment",
                         "path": "/report/operation/loan-repayment",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "6-2-2"
                     },
                     {
                         "navTitle": "Platform Statistics Data",
                         "path": "/report/operation/platform-statistics-data",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "6-2-3"
                     },
                     {
                         "navTitle": "Platform Statistics Data Aggregation",
                         "path": "/report/operation/platform-statistics-data-aggregation",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "6-2-4"
                     },
                     {
                         "navTitle": "Loan Overdue",
                         "path": "/report/operation/loan-overdue",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "6-2-5"
                     },
                     {
                         "navTitle": "Customer Invite Detail",
                         "path": "/report/operation/customer-invite-detail",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "6-2-6"
                     },
                     {
                         "navTitle": "Conversion Statistics",
                         "path": "/report/operation/conversion-statistics",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "6-2-7"
                     },
                     {
                         "navTitle": "Review Efficiency",
                         "path": "/report/operation/review-efficiency",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "6-2-8"
                     },
                     {
                         "navTitle": "Review History",
                         "path": "/report/operation/review-history",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "6-2-9"
                     },
                     {
                         "navTitle": "Review Monitor",
                         "path": "/report/operation/review-monitor",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "6-2-10"
                     },
                     {
                         "navTitle": "Feedback Summary",
                         "path": "/report/operation/feedback-summary",
-                        "icon": "fa fa-circle-o"
+                        "icon": "fa fa-circle-o",
+                        "index": "6-2-11"
                     }
                 ]
             },

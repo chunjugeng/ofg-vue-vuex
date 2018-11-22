@@ -1,5 +1,5 @@
 .page-content {
-    margin-top: 70px;
+    margin-top: 50px;
 
     .search {
         h1 {
@@ -10,6 +10,8 @@
         &>div {
             padding: 10px 0;
             background-color: white;
+            border-radius: 3px;
+            box-shadow: 0px 1px 3px 0px #ccc;
 
             h5 {
                 padding: 5px 10px 15px;
@@ -26,6 +28,8 @@
     .table-list {
         margin-top: 20px;
         background-color: white;
+        border-radius: 3px;
+        box-shadow: 0px 1px 3px 0px #ccc;
 
         .pager {
             text-align: center;

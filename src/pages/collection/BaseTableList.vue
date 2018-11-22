@@ -76,30 +76,23 @@
 </template>
 
 <script>
-    import {calculateClientWidth} from '~/utils/helper';
+    import {mapState} from 'vuex';
     export default {
         props: [
             'data',
             'type'
         ],
-
-        data() {
-            return {
-                tableW: ''
-            }
-        },
-
-        methods: {
-            scrollTableW() {
-                this.tableW = calculateClientWidth();
-            }
+        computed: {
+            ...mapState('nav', {
+                tableW: state=> state.tableW
+            })
         },
         
         mounted() {
             const that = this;
-            this.scrollTableW();
+            this.$store.dispatch('nav/calculateTableW');
             window.onresize = function() {
-                that.scrollTableW();
+                this.$store.dispatch('nav/calculateTableW');
             };
         },
 
