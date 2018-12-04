@@ -1,28 +1,36 @@
 <template>
     <div class="search-com">
-        <div class="default">
-            <span class="fa fa-phone"/>
-            <input type="text" name="mobile" placeholder="Mobile" :value="params.mobile" @change="changeUI"/>
-        </div>
         <template v-if="type==='ALL'">
             <div class="default">
+                <span class="fa fa-info"/>
+                <input type="text" name="id" placeholder="Customer ID"/>
+            </div>
+            <div class="default">
+                <span class="fa fa-phone"/>
+                <input type="text" name="mobile" placeholder="Customer Mobile"/>
+            </div>
+            <div class="default">
                 <span class="fa fa-user"/>
-                <input type="text" name="realName" placeholder="Real Name" :value="params.realName" @change="changeUI"/>
+                <input type="text" name="realName" placeholder="Customer Name"/>
             </div>
 
             <div class="default">
                 <span class="fa fa-id-card"/>
-                <input type="text" name="ktp" placeholder="KTP" :value="params.ktp" @change="changeUI"/>
+                <input type="text" name="aadhaar" placeholder="Aadhaar Number"/>
+            </div>
+            <div class="default">
+                <span class="fa fa-id-card"/>
+                <input type="text" name="panCode" placeholder="Pan Code"/>
             </div>
 
             <div class="default select">
-                <span>Status</span>
-                <select :value="params.status" @change="changeUI" name="status">
+                <span>Customer Status</span>
+                <select name="status">
                     <option value="">请选择...</option>
-                    <option>CREATED</option>
-                    <option>ACTIVE</option>
-                    <option>HOLD</option>
-                    <option>DISABLED</option>
+                    <option>REGISTERED</option>
+                    <option>BASIC_REVIEW</option>
+                    <option>WAIT_FOR_APPLY</option>
+                    <option>APPLIED</option>
                 </select>
             </div>
 

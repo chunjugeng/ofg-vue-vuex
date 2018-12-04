@@ -2,6 +2,7 @@
     <base-body 
         :params="params"
         :fetch="querySettingDiversion"
+        class="diversion"
         >
         <template slot="search">
              <div class="search">
@@ -51,23 +52,15 @@
                     <div class="dialog-title" :style="{'borderBottom': '1px solid #e4e4e4'}">
                         <h5>Detail</h5>
                     </div>
-                    <div class="dialog-body upload-file">
+                    <div class="dialog-body upload-file-dialog">
                         <div class="detail name">
                             <span class="text">Name</span>
                             <div class="data">
                                 <input type="text" >
                             </div>
                         </div>
-
-                        <div class="detail logo">
-                            <span class="text">Logo</span>
-                            <div class="data">
-                                <input type="file" @change="uploadFile">
-                                <span>
-                                    <img :src="uploadLogoUrl"/>
-                                </span>
-                            </div>
-                        </div>
+                        <upload-file />
+                        
 
                         <div class="detail score">
                             <span class="text">Score</span>
@@ -111,6 +104,12 @@
                                 </select>
                             </div>
                         </div>
+
+                        <div class="btn" :style="{'borderTop': '1px solid #e4e4e4'}">
+                            <button class="cancel">Cancel</button>
+                            <button class="delete">Delete</button>
+                            <button class="confirm">Confirm</button>
+                        </div>
                     </div>
                     
                 </form>
@@ -124,12 +123,12 @@
     import BaseBody from './BaseBody.vue';
     import systemService from '~/service/system';
     import DialogModal from '~/common/DialogModal.vue';
+    import UploadFile from '~/common/UploadFile.vue';
     export default {
         data() {
             return {
                 isOpenDialog: false,
                 currDialogContent: '',
-                uploadLogoUrl: '',
                 params: {
                     tableThead: ['Setting ID', 'Name', 'Logo', 'Score', 'Download Url', 'Amount', 'Download Url', 'Interest', 'Review Time', 'Sort Num', 'Status', 'UpdateTime', 'CreateTime'],
                     tableT: 'Setting List'
@@ -143,10 +142,6 @@
             })
         },
         methods: {
-            uploadFile(ev) {
-                const val = ev.currentTarget.value;
-                console.log(val, 'val')
-            },
             querySettingDiversion(page) {
                 page = page ? page: 0;
                 const params= {
@@ -165,8 +160,73 @@
         },
         components: {
             BaseBody,
-            DialogModal
+            DialogModal,
+            UploadFile
         }
     }
 </script>
+
+<style lang="scss">
+    .diversion {
+        .dialog-modal {
+            width: 50% !important;
+        }
+
+        .upload-file-dialog {
+            padding: 0 !important;
+            & > div.detail, & > div.upload-file {
+                margin: 10px auto;
+                width: 80%;
+            }
+            .btn {
+                margin-top: 30px;
+                border-top: 1px solid #e4e4e4;
+                width: 100%;
+                .cancel {
+                    margin-left: 20px;
+                    float: left;
+                }
+                .confirm {
+                    margin-right: 20px;
+                    float: right;
+                }
+            }
+        }
+    }
+    .upload-file {
+        height: 70px;
+        display: table;
+        span.logo-text {
+            padding-right: 10px;
+            width: 30%;
+            text-align: right;
+        }
+        span.logo-text, &>div {
+            display: table-cell;
+        }
+        & > div.upload {
+            width: 100%;
+            display: table;
+            & >input[type="file"], & > span {
+                
+                display: inline-block;
+                
+            }
+            & > input[type="file"] {
+                width: 60%;
+                border: 0 !important;
+                
+            }
+            & > span {
+                width: 40%;
+                
+                img {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+            
+        }
+    }
+</style>
 

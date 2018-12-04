@@ -7,43 +7,51 @@
                 <div class="item" slot="Basic">
                     <div class="information">
                         <div class="default">
-                            <span><i class="fa fa-user">Customer ID</i></span>
+                            <span><i class="fa fa-info">Customer ID</i></span>
                             <input disabled :value="customerId"/>
                         </div>
                         <div class="default">
                             <span><i class="fa fa-phone">Customer Mobile</i></span>
                             <input :disabled="isDisabled" :value="customerInfo._id" @change="change" name="mobile" placeholder="Customer Mobile"/>
                         </div>
-
                         <div class="default">
-                            <span><i class="fa fa-user">Customer Status</i></span>
-                            <select :disabled="isDisabled" @change="change" name="status" :value="customerInfo.testDefaultStatus">
-                                <option>CREATED</option>
-                                <option>ACTIVE</option>
-                                <option>HOLD</option>
-                                <option>DISABLED</option>
-                            </select>
+                            <span><i class="fa fa-info">Customer Name</i></span>
+                            <input :disabled="isDisabled" :value="customerInfo._id" @change="change" name="name" placeholder="Customer Name"/>
                         </div>
 
                         <div class="default">
-                            <span><i class="fa fa-user">Status Expired Time</i></span>
-                            <input />
+                            <span><i class="fa fa-id-card">Aadhaar Number</i></span>
+                            <input :disabled="isDisabled" :value="customerInfo._id" @change="change" name="aadhaar" placeholder="Aadhaar Number"/>
+                        </div>
+                        <div class="default">
+                            <span><i class="fa fa-info">Pan Code</i></span>
+                            <input :disabled="isDisabled" :value="customerInfo._id" @change="change" name="panCode" placeholder="Pan Code"/>
+                        </div>
+
+                        <div class="default select">
+                            <span>Customer Status</span>
+                            <select name="status">
+                                <option value="">请选择...</option>
+                                <option>REGISTERED</option>
+                                <option>BASIC_REVIEW</option>
+                                <option>WAIT_FOR_APPLY</option>
+                                <option>APPLIED</option>
+                            </select>
                         </div>
 
                         <div class="default">
                             <span><i class="fa fa-user">Register Time</i></span>
                             <input />
                         </div>
-
-                        <div class="default">
-                            <span><i class="fa fa-phone">Failed Login Times</i></span>
-                            <input :disabled="isDisabled" :value="customerInfo._id" @change="change" name="failedLoginTimes" placeholder="Failed Login Times"/>
-                        </div>
                     </div>
                     <div class="btn">
                         <button v-if="isDisabled" @click="edit"><i class="fa fa-edit"/>Edit</button>
                         <button v-if="!isDisabled" @click="modify"><i class="fa fa-save"/>Confirm Modify</button>
                     </div>
+                </div>
+
+                <div class="item" slot="PersonalCertification">
+                    Personal Certification
                 </div>
                 <div class="item" slot="Personal">
                     <div class="information">
@@ -146,6 +154,10 @@
                     {
                         title: 'Basic Info',
                         type: 'Basic'
+                    },
+                    {
+                        title: 'Personal Certification',
+                        type: 'PersonalCertification'
                     },
                     {
                         title: 'Personal Info',

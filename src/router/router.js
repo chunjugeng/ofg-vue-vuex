@@ -1,68 +1,68 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Login from '~/pages/login/Login.vue';
+import Layout from '~/common/Layout.vue';
+const Login =()=> import('~/pages/login/Login');
 
-import All from '~/pages/customer/All.vue';
-import Sms from '~/pages/customer/Sms.vue';
-import PhoneRecord from '~/pages/customer/PhoneRecord.vue';
-import CustomerDetail from '~/pages/customer/CustomerDetail.vue';
+//customer 
+const All =()=> import('~/pages/customer/All');
+const Sms =()=> import('~/pages/customer/Sms');
+const PhoneRecord =()=> import('~/pages/customer/PhoneRecord');
+const CustomerDetail =()=> import('~/pages/customer/CustomerDetail');
 
-import Deposits from '~/pages/finance/Deposits.vue';
-import LoanIssue from '~/pages/finance/LoanIssue.vue';
-import BonusIssues from '~/pages/finance/BonusIssues.vue';
-import FinanceLogs from '~/pages/finance/Logs.vue';
+//loan management
+const LoanManagement =()=> import('~/pages/loan/LoanIssue');
 
-import AllReviewCases from '~/pages/application/AllReviewCases.vue';
-import ApplicationReviewDetail from '~/pages/application/ReviewDetail.vue';
-import AllReviewTasks from '~/pages/application/AllReviewTasks.vue';
-import CaseAssignmentFirstReview from '~/pages/application/case-assignment/First.vue';
-import CaseAssignmentSecondReview from '~/pages/application/case-assignment/Second.vue';
-import CaseAssignmentFinalReview from '~/pages/application/case-assignment/Final.vue';
-import MyReviewCasesFirst from '~/pages/application/my-review-cases/First.vue';
-import MyReviewCasesSecond from '~/pages/application/my-review-cases/Second.vue';
-import MyReviewCasesFinal from '~/pages/application/my-review-cases/Final.vue';
-import MyReviewCasesReviewHistory from '~/pages/application/my-review-cases/ReviewHistory.vue';
+//fiance
+const Deposits =()=> import('~/pages/finance/Deposits');
+const LoanIssue =()=> import('~/pages/finance/LoanIssue');
+const BonusIssues =()=> import('~/pages/finance/BonusIssues');
+const FinanceLogs =()=> import('~/pages/finance/Logs');
 
-import FinalReviewEfficiency from '~/pages/application/my-review-efficiency/FinalReviewEfficiency';
+//application
+const AllReviewCases =()=> import('~/pages/application/AllReviewCases');
+const ApplicationReviewDetail =()=> import('~/pages/application/ReviewDetail');
+const AllReviewTasks =()=> import('~/pages/application/AllReviewTasks');
+const CaseAssignmentFirstReview =()=> import('~/pages/application/case-assignment/First');
+const CaseAssignmentSecondReview =()=> import('~/pages/application/case-assignment/Second');
+const CaseAssignmentFinalReview =()=> import('~/pages/application/case-assignment/Final');
+const MyReviewCasesFirst =()=> import('~/pages/application/my-review-cases/First');
+const MyReviewCasesSecond =()=> import('~/pages/application/my-review-cases/Second');
+const MyReviewCasesFinal =()=> import('~/pages/application/my-review-cases/Final');
+const MyReviewCasesReviewHistory =()=> import('~/pages/application/my-review-cases/ReviewHistory');
+const FinalReviewEfficiency =()=> import('~/pages/application/my-review-efficiency/FinalReviewEfficiency');
 
-
-import CollectionCases from '~/pages/collection/CollectionCases.vue';
-import PartPaymentManagement from '~/pages/collection/repayment-management/Part.vue';
-import ReducePaymentManagement from '~/pages/collection/repayment-management/Reduce.vue';
+//collection
+const CollectionCases =()=> import('~/pages/collection/CollectionCases');
+const PartPaymentManagement =()=> import('~/pages/collection/repayment-management/Part');
+const ReducePaymentManagement =()=> import('~/pages/collection/repayment-management/Reduce');
 
 
 //system management
-import SystemAdminManagement from '~/pages/system/Admin.vue';
-import SystemBlacklistManagement from '~/pages/system/BlackList.vue';
-import SystemWhiteListManagement from '~/pages/system/WhiteList.vue';
-import SystemSettingManagement from '~/pages/system/Setting.vue';
-import InviteSettingManagement from '~/pages/system/Invite.vue';
-import ReviewReasonManagement from '~/pages/system/Reason.vue';
-import DiversionManagement from '~/pages/system/Diversion.vue';
+const SystemAdminManagement =()=> import('~/pages/system/Admin');
+const SystemBlacklistManagement =()=> import('~/pages/system/BlackList');
+const SystemWhiteListManagement =()=> import('~/pages/system/WhiteList');
+const SystemSettingManagement =()=> import('~/pages/system/Setting');
+const InviteSettingManagement =()=> import('~/pages/system/Invite');
+const ReviewReasonManagement =()=> import('~/pages/system/Reason');
+const DiversionManagement =()=> import('~/pages/system/Diversion');
 
 //system report
-import SystemReportFinanceLoanIssue from '~/pages/system-report/finance-report/LoanIssue.vue';
-import SystemReportFinanceBonusIssue from '~/pages/system-report/finance-report/BonusIssue.vue';
-import SystemReportFinanceLoanDeposit from '~/pages/system-report/finance-report/LoanDeposit.vue';
+const SystemReportFinanceLoanIssue =()=> import('~/pages/system-report/finance-report/LoanIssue');
+const SystemReportFinanceBonusIssue =()=> import('~/pages/system-report/finance-report/BonusIssue');
+const SystemReportFinanceLoanDeposit =()=> import('~/pages/system-report/finance-report/LoanDeposit');
 
-import SystemReportLoanOperation from '~/pages/system-report/operation-report/LoanOperation.vue';
-import SystemReportLoanRepayment from '~/pages/system-report/operation-report/LoanRepayment.vue';
-import PlatformStatisticsData from '~/pages/system-report/operation-report/PlatformStatisticsData.vue';
-import PlatformStatisticsDataAggregation from '~/pages/system-report/operation-report/PlatformStatisticsDataAggregation.vue';
-import SystemReportLoanOverdue from '~/pages/system-report/operation-report/LoanOverdue.vue';
-import SystemReportCustomerInviteDetail from '~/pages/system-report/operation-report/CustomerInviteDetail.vue';
-import ConversionStatistics from '~/pages/system-report/operation-report/ConversionStatistics.vue';
-import ReviewEfficiency from '~/pages/system-report/operation-report/ReviewEfficiency.vue';
-import SystemReportReviewHistoty from '~/pages/system-report/operation-report/ReviewHistory.vue';
-import ReviewMonitor from '~/pages/system-report/operation-report/ReviewMonitor.vue';
+const SystemReportLoanOperation =()=> import('~/pages/system-report/operation-report/LoanOperation');
+const SystemReportLoanRepayment =()=> import('~/pages/system-report/operation-report/LoanRepayment');
+const PlatformStatisticsData =()=> import('~/pages/system-report/operation-report/PlatformStatisticsData');
+const PlatformStatisticsDataAggregation =()=> import('~/pages/system-report/operation-report/PlatformStatisticsDataAggregation');
+const SystemReportLoanOverdue =()=> import('~/pages/system-report/operation-report/LoanOverdue');
+const SystemReportCustomerInviteDetail =()=> import('~/pages/system-report/operation-report/CustomerInviteDetail');
+const ConversionStatistics =()=> import('~/pages/system-report/operation-report/ConversionStatistics');
+const ReviewEfficiency =()=> import('~/pages/system-report/operation-report/ReviewEfficiency');
+const SystemReportReviewHistoty =()=> import('~/pages/system-report/operation-report/ReviewHistory');
+const ReviewMonitor =()=> import('~/pages/system-report/operation-report/ReviewMonitor');
+const OperationFeedbackSummary =()=> import('~/pages/system-report/operation-report/FeedbackSummary');
 
-
-import OperationFeedbackSummary from '~/pages/system-report/operation-report/FeedbackSummary.vue';
-
-
-
-
-import Layout from '~/common/Layout.vue';
 
 Vue.use(VueRouter);
 const router = new VueRouter({
@@ -97,6 +97,12 @@ const router = new VueRouter({
                 {
                     path: '/customer/customer-detail',
                     component: CustomerDetail
+                },
+
+                //loan management
+                {
+                    path: '/loan-management',
+                    component: LoanManagement
                 },
                 //finance
                 {

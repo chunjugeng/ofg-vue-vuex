@@ -61,7 +61,6 @@
 
     #dialog {
         background-color: rgba(0, 0, 0, .5);
-       
 
         .dialog-modal {
             padding: 0 0 10px;
@@ -90,7 +89,7 @@
                 padding: 0 10px;
                 display: table;
                 width: 100%;
-                &.upload-file {
+                &.upload-file-dialog {
                     margin-top: 15px;
                 }
                 input, select {
@@ -130,7 +129,7 @@
                     }
                 } 
                 &>div.btn {
-                    margin: 10px 0 20px;
+                    padding: 15px 0 20px;
                     text-align: center;
                     input[type="button"] {
                         margin-right: 10px;
@@ -148,8 +147,7 @@
                 }
                 
                 &>div.detail {
-                    margin: 10px auto;
-                    width: 80%;
+                    
                     display: table;
                     span.text {
                         padding-right: 10px;

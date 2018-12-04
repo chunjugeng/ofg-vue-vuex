@@ -1,11 +1,8 @@
 <template>
     <div class="wrapper app">
         <header class="top-nav">
-            <div class="collapse-btn">
-                <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-                    <el-radio-button :label="false">展开</el-radio-button>
-                    <el-radio-button :label="true">收起</el-radio-button>
-                </el-radio-group>
+            <div class="collapse-btn" :style="{'left': !isCollapse ? '230px' : '64px'}">
+                <i class="fa sidebar-toggle" @click="toggleNav"></i>
             </div>
 
             <div class="navbar-nav">
@@ -34,28 +31,35 @@
                             <img src="../images/logo.jpg" />
                         </div>
                         <h5 v-show="!isCollapse">management</h5>
-                        <el-submenu v-for="(item, index) in navRoute" :key="item.index" :index="item.index" :class="{'parentActive': index === currIndex}">
-                            <div slot="title">
-                                <i :class="item.icon" />
-                                <span slot="title" @click="changeNav(index)">{{item.navTitle}}</span>
-                            </div>
+                        <div v-for="(item, index) in navRoute" :key="item.index">
+                            <el-submenu :index="item.index" :class="{'parentActive': index === currIndex}" v-if="item.hasSecondNav">
+                                <div slot="title" >
+                                    <i :class="item.icon" />
+                                    <span slot="title" @click="changeNav(index)" >{{item.navTitle}}</span>
+                                </div>
+                                <template v-for="(v, n) in item.list" v-if="item.hasSecondNav">
+                                    <el-submenu v-if="v.hasThreeNav" :index="v.index" class="second-nav">
+                                        <span slot="title">
+                                            <i :class="v.icon" />
+                                            {{v.navTitle}}
+                                        </span>
+                                        <el-menu-item :index="l.index" class="three-nav" v-for="(l, id) in v.list" :key="id">
+                                            <router-link :to="l.path">{{l.navTitle}}</router-link>
+                                        </el-menu-item>
+                                    </el-submenu>
+                                    <el-menu-item :index="v.index" v-else class="second-nav">
+                                        <router-link :to="v.path" ><i :class="v.icon" />{{v.navTitle}}</router-link>
 
-                            <template v-for="(v, n) in item.list">
-                                <el-submenu v-if="v.hasThreeNav" :index="v.index" class="second-nav">
-                                    <span slot="title">
-                                        <i :class="v.icon" />
-                                        {{v.navTitle}}
-                                    </span>
-                                    <el-menu-item :index="l.index" class="three-nav" v-for="(l, id) in v.list" :key="id">
-                                        <router-link :to="l.path">{{l.navTitle}}</router-link>
                                     </el-menu-item>
-                                </el-submenu>
-                                <el-menu-item :index="v.index" v-else class="second-nav">
-                                    <router-link :to="v.path" ><i :class="v.icon" />{{v.navTitle}}</router-link>
+                                </template>
+                            </el-submenu>
 
-                                </el-menu-item>
-                            </template>
-                        </el-submenu>
+                            <el-menu-item :index="item.index" v-else="!item.hasSecondNav">
+                                <i :class="item.icon" />
+                                <router-link :to="item.parentPath" >{{item.navTitle}}</router-link>
+                            </el-menu-item>
+
+                        </div>
                     </el-menu>
                 </template>
             </div>
@@ -64,6 +68,10 @@
         <div class="flex-content" :style="{'marginLeft': !isCollapse ? '230px' : '64px'}">
             <router-view></router-view>
         </div>
+
+        <footer :style="{'paddingLeft': !isCollapse ? '230px' : '64px'}">
+           <p> © 2018 现金贷 保留所有权利</p>
+        </footer>
     </div>
 </template>
 <script>
@@ -83,6 +91,9 @@
             })
         },
         methods: {
+            toggleNav() {
+                this.isCollapse = !this.isCollapse;
+            },
             changeNav(index) {
                 this.currIndex = index;
             },
@@ -94,12 +105,14 @@
             },
             init(url) {
                 this.navRoute.map(nav=> {
+                    const subStr = url.substr(url.indexOf('#') +1);
                     if (url.indexOf(nav.parentPath) > 0) {
                         this.currIndex = nav.index -1;
                     }
-
-                    nav.list.map(item => {
-                        const subStr = url.substr(url.indexOf('#') +1);
+                    if (subStr === nav.parentPath && !nav.hasSecondNav) {
+                        return this.defaultActiveIndex = nav.index;
+                    }
+                    nav.list && nav.list.map(item => {
                         if (subStr === item.path) {
                             return this.defaultActiveIndex = item.index;
                         }
@@ -107,9 +120,9 @@
                             if (data.path === subStr) {
                                 return this.defaultActiveIndex = data.index;
                             }
-                        })
-                        
-                    })
+                        });
+                    });
+                    
                 });
 
                 
@@ -181,8 +194,16 @@
         box-shadow: 1px 1px 1px #4aa783;
         .collapse-btn {
             position: absolute;
-            top: 0;
-            left: 30%;
+            i {
+                width: 40px;
+                height: 50px;
+                line-height: 50px;
+                display: inline-block;
+                color: white;
+                text-align: center;
+                font-size: 20px;
+                cursor: pointer;
+            }
         }
         .navbar-nav {
             display: inline-block;
@@ -284,5 +305,15 @@
         
     }
     
+    footer {
+        padding: 15px 0;
+        width: 100%;
+        background: white;
+        border-top: 1px solid #e4e4e4;
+        p {
+            margin-left: 24px;
+            font-size: 12px;
+        }
+    }
     
 </style>

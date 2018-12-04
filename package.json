@@ -8,6 +8,13 @@
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production"
   },
+  "dependencies": {
+    "clean-webpack-plugin": "^1.0.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.2",
+    "vuex": "^3.0.1"
+  },
   "author": "Geng shelly",
   "license": "ISC",
   "devDependencies": {
@@ -32,13 +39,11 @@
     "qs": "^6.5.2",
     "sass-loader": "^7.1.0",
     "url-loader": "^1.1.2",
-    "vue": "^2.5.17",
     "vue-loader": "^15.4.2",
-    "vue-router": "^3.0.1",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.5.17",
-    "vuex": "^3.0.1",
     "webpack": "^4.20.2",
+    "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9",
     "yargs": "^12.0.2"
@@ -52,11 +57,15 @@
       "changeOrigin": true
     },
     "/api": {
-      "target": "http://testadmin.rajauang.mobi",
+      "target": "https://www-demo.dianrong.com",
       "changeOrigin": true
     },
     "/auth": {
       "target": "http://testadmin.rajauang.mobi",
+      "changeOrigin": true
+    },
+    "/v4": {
+      "target": "https://www.crunchbase.com",
       "changeOrigin": true
     }
   }

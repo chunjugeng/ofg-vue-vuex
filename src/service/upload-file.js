@@ -1,15 +1,16 @@
 import * as axios from 'axios';
 
-const BASE_URL = 'http://localhost:3000';
+// const BASE_URL = 'http://localhost:3000';
 
 function upload(formData) {
-    const url = `${BASE_URL}/photos/upload`;
+    const url = `/feapi/user/avatar`;
     return axios.post(url, formData)
-        // get data
-        .then(x => x.data)
-        // add url field
-        .then(x => x.map(img => Object.assign({},
-            img, { url: `${BASE_URL}/images/${img.id}` })));
+        .then(res => {
+            return res;
+        })
+        .catch(err => {
+            return err;
+        })
 }
 
 export { upload }

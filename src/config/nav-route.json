@@ -29,19 +29,92 @@
             }
         ]
     },
+
+    {
+        "navTitle": "Loan Management",
+        "hasSecondNav": false,
+        "icon": "fa fa-users",
+        "parentPath": "/loan-management",
+        "index": "2"
+    },
+    {
+        "navTitle": "Issue Management",
+        "hasSecondNav": true,
+        "icon": "fa fa-users",
+        "parentPath": "customer",
+        "index": "3",
+        "list": [
+            {
+                "navTitle": "Phone Contact Record",
+                "path": "/customer/phone-record",
+                "isThreeNav": false,
+                "icon": "fa fa-circle-o",
+                "index": "3-1"
+            }
+        ]
+    },
+    {
+        "navTitle": "Repayment Management",
+        "hasSecondNav": true,
+        "icon": "fa fa-users",
+        "parentPath": "customer",
+        "index": "4",
+        "list": [
+            {
+                "navTitle": "Phone Contact Record",
+                "path": "/customer/phone-record",
+                "isThreeNav": false,
+                "icon": "fa fa-circle-o",
+                "index": "4-1"
+            }
+        ]
+    },
+    {
+        "navTitle": "Collection Management",
+        "hasSecondNav": true,
+        "icon": "fa fa-users",
+        "parentPath": "customer",
+        "index": "5",
+        "list": [
+            {
+                "navTitle": "Phone Contact Record",
+                "path": "/customer/phone-record",
+                "isThreeNav": false,
+                "icon": "fa fa-circle-o",
+                "index": "5-1"
+            }
+        ]
+    },
+    {
+        "navTitle": "Authority Management",
+        "hasSecondNav": true,
+        "icon": "fa fa-users",
+        "parentPath": "customer",
+        "index": "6",
+        "list": [
+            {
+                "navTitle": "Phone Contact Record",
+                "path": "/customer/phone-record",
+                "isThreeNav": false,
+                "icon": "fa fa-circle-o",
+                "index": "6-1"
+            }
+        ]
+    },
+    
     {
         "navTitle": "Finance Management",
         "hasSecondNav": true,
         "icon": "fa fa-users",
         "parentPath": "finance",
-        "index": "2",
+        "index": "7",
         "list": [
             {
                 "navTitle": "Deposit",
                 "path": "/finance/deposit",
                 "hasThreeNav": false,
                 "icon": "fa fa-circle-o",
-                "index": "2-1"
+                "index": "7-1"
                 
             },
             {
@@ -49,7 +122,7 @@
                 "path": "/finance/loan-issue",
                 "hasThreeNav": false,
                 "icon": "fa fa-circle-o",
-                "index": "2-2"
+                "index": "7-2"
                
             },
             {
@@ -57,7 +130,25 @@
                 "path": "/finance/bonus-issues",
                 "isThreeNav": false,
                 "icon": "fa fa-circle-o",
-                "index": "2-3"
+                "index": "7-3"
+            }
+        ]
+    },
+
+    {
+        "navTitle": "Risk Management",
+        "hasSecondNav": true,
+        "icon": "fa fa-users",
+        "parentPath": "finance",
+        "index": "8",
+        "list": [
+            {
+                "navTitle": "Deposit",
+                "path": "/finance/deposit",
+                "hasThreeNav": false,
+                "icon": "fa fa-circle-o",
+                "index": "8-1"
+                
             }
         ]
     },
@@ -66,21 +157,21 @@
         "hasSecondNav": true,
         "icon": "fa fa-book",
         "parentPath": "application",
-        "index": "3",
+        "index": "9",
         "list": [
             {
                 "navTitle": "All Review Cases",
                 "path": "/application/all-review-cases",
                 "hasThreeNav": false,
                 "icon": "fa fa-circle-o",
-                "index": "3-1"
+                "index": "9-1"
             },
             {
                 "navTitle": "All Review Tasks",
                 "path": "/application/all-review-tasks",
                 "hasThreeNav": false,
                 "icon": "fa fa-circle-o",
-                "index": "3-2"
+                "index": "9-2"
                 
             },
             {
@@ -88,25 +179,25 @@
                 "path": "/application/case-Assignment",
                 "hasThreeNav": true,
                 "icon": "fa fa-book",
-                "index": "3-3",
+                "index": "9-3",
                 "list": [
                     {
                         "navTitle": "First Review Assignment",
                         "path": "/application/case-assignment/first-review",
                         "icon": "fa fa-circle-o",
-                        "index": "3-3-1"
+                        "index": "9-3-1"
                     },
                     {
                         "navTitle": "Second Review Assignment",
                         "path": "/application/case-assignment/second-review",
                         "icon": "fa fa-circle-o",
-                        "index": "3-3-2"
+                        "index": "9-3-2"
                     },
                     {
                         "navTitle": "Final Review Assignment",
                         "path": "/application/case-assignment/final-review",
                         "icon": "fa fa-circle-o",
-                        "index": "3-3-3"
+                        "index": "9-3-3"
                     }
                 ]
             },
@@ -115,31 +206,31 @@
                 "path": "/application/my-review-cases",
                 "hasThreeNav": true,
                 "icon": "fa fa-book",
-                "index": "3-4",
+                "index": "9-4",
                 "list": [
                     {
                         "navTitle": "First Review Assignment",
                         "path": "/application/my-review-cases/first",
                         "icon": "fa fa-circle-o",
-                        "index": "3-4-1"
+                        "index": "9-4-1"
                     },
                     {
                         "navTitle": "Second Review Assignment",
                         "path": "/application/my-review-cases/second",
                         "icon": "fa fa-circle-o",
-                        "index": "3-4-2"
+                        "index": "9-4-2"
                     },
                     {
                         "navTitle": "Final Review Assignment",
                         "path": "/application/my-review-cases/final",
                         "icon": "fa fa-circle-o",
-                        "index": "3-4-3"
+                        "index": "9-4-3"
                     }, 
                     {
                         "navTitle": "Review History Cases",
                         "path": "/application/my-review-cases/review-history",
                         "icon": "fa fa-circle-o",
-                        "index": "3-4-4"
+                        "index": "9-4-4"
                     }
                 ]
             },
@@ -149,13 +240,13 @@
                 "path": "/application/final-review-efficiency",
                 "hasThreeNav": true,
                 "icon": "fa fa-book",
-                "index": "3-5",
+                "index": "9-5",
                 "list": [
                     {
                         "navTitle": "Final Review Efficiency",
                         "path": "/application/final-review-efficiency",
                         "icon": "fa fa-circle-o",
-                        "index": "3-5-1"
+                        "index": "9-5-1"
                     }
                 ]
             }
@@ -169,35 +260,35 @@
         "hasSecondNav": true,
         "icon": "fa fa-book",
         "parentPath": "collection",
-        "index": "4",
+        "index": "10",
         "list": [
             {
                 "navTitle": "Collection Cases",
                 "path": "/collection/collection-cases",
                 "hasThreeNav": false,
                 "icon": "fa fa-circle-o",
-                "index": "4-1"
+                "index": "10-1"
             },
             {
                 "navTitle": "Repayment Management",
                 "path": "/collection/Repayment Management",
                 "hasThreeNav": true,
                 "icon": "fa fa-circle-o",
-                "index": "4-2",
+                "index": "10-2",
                 "list": [
                     {
                         "navTitle": "Part Repay Management",
                         "path": "/collection/part-repay-management",
                         "hasThreeNav": false,
                         "icon": "fa fa-circle-o",
-                        "index": "4-2-1"
+                        "index": "10-2-1"
                     },
                     {
                         "navTitle": "Reduce Repay Management",
                         "path": "/collection/reduce-repay-management",
                         "hasThreeNav": false,
                         "icon": "fa fa-circle-o",
-                        "index": "4-2-2"
+                        "index": "10-2-2"
                         
                     }
                 ]
@@ -211,56 +302,56 @@
         "hasSecondNav": true,
         "icon": "fa fa-book",
         "parentPath": "system",
-        "index": "5",
+        "index": "11",
         "list": [
             {
                 "navTitle": "Admin Management",
                 "path": "/system/admin",
                 "hasThreeNav": false,
                 "icon": "fa fa-circle-o",
-                "index": "5-1"
+                "index": "11-1"
             },
             {
                 "navTitle": "Black List Management",
                 "path": "/system/blacklist",
                 "hasThreeNav": false,
                 "icon": "fa fa-circle-o",
-                "index": "5-2"
+                "index": "11-2"
             },
             {
                 "navTitle": "White List Management",
                 "path": "/system/whitelist",
                 "hasThreeNav": false,
                 "icon": "fa fa-circle-o",
-                "index": "5-3"
+                "index": "11-3"
             },
             {
                 "navTitle": "Setting Management",
                 "path": "/system/setting",
                 "hasThreeNav": false,
                 "icon": "fa fa-circle-o",
-                "index": "5-4"
+                "index": "11-4"
             },
             {
                 "navTitle": "Invite Setting Management",
                 "path": "/system/invite",
                 "hasThreeNav": false,
                 "icon": "fa fa-circle-o",
-                "index": "5-5"
+                "index": "11-5"
             },
             {
                 "navTitle": "Review Reason Management",
                 "path": "/system/reason",
                 "hasThreeNav": false,
                 "icon": "fa fa-circle-o",
-                "index": "5-6"
+                "index": "11-6"
             },
             {
                 "navTitle": "Diversion Management",
                 "path": "/system/diversion",
                 "hasThreeNav": false,
                 "icon": "fa fa-circle-o",
-                "index": "5-7"
+                "index": "11-7"
             }
             
         ]
@@ -270,32 +361,32 @@
         "hasSecondNav": true,
         "icon": "fa fa-table",
         "parentPath": "report",
-        "index": "6",
+        "index": "12",
         "list": [
             {
                 "navTitle": "Finance Report",
                 "path": "/report",
                 "hasThreeNav": true,
                 "icon": "fa fa-table",
-                "index": "6-1",
+                "index": "12-1",
                 "list": [
                     {
                         "navTitle": "Loan Issue",
                         "path": "/report/finance/loan-issue",
                         "icon": "fa fa-circle-o",
-                        "index": "6-1-1"
+                        "index": "12-1-1"
                     },
                     {
                         "navTitle": "Bonus Issue",
                         "path": "/report/finance/bonus-issue",
                         "icon": "fa fa-circle-o",
-                        "index": "6-1-2"
+                        "index": "12-1-2"
                     },
                     {
                         "navTitle": "Loan Deposit",
                         "path": "/report/finance/loan-deposit",
                         "icon": "fa fa-circle-o",
-                        "index": "6-1-3"
+                        "index": "12-1-3"
                     }
                 ]
             },
@@ -304,73 +395,73 @@
                 "path": "/report",
                 "hasThreeNav": true,
                 "icon": "fa fa-table",
-                "index": "6-2",
+                "index": "12-2",
                 "list": [
                     {
                         "navTitle": "Loan Operation",
                         "path": "/report/operation/loan-operation",
                         "icon": "fa fa-circle-o",
-                        "index": "6-2-1"
+                        "index": "12-2-1"
                     },
                     {
                         "navTitle": "Loan Repayment",
                         "path": "/report/operation/loan-repayment",
                         "icon": "fa fa-circle-o",
-                        "index": "6-2-2"
+                        "index": "12-2-2"
                     },
                     {
                         "navTitle": "Platform Statistics Data",
                         "path": "/report/operation/platform-statistics-data",
                         "icon": "fa fa-circle-o",
-                        "index": "6-2-3"
+                        "index": "12-2-3"
                     },
                     {
                         "navTitle": "Platform Statistics Data Aggregation",
                         "path": "/report/operation/platform-statistics-data-aggregation",
                         "icon": "fa fa-circle-o",
-                        "index": "6-2-4"
+                        "index": "12-2-4"
                     },
                     {
                         "navTitle": "Loan Overdue",
                         "path": "/report/operation/loan-overdue",
                         "icon": "fa fa-circle-o",
-                        "index": "6-2-5"
+                        "index": "12-2-5"
                     },
                     {
                         "navTitle": "Customer Invite Detail",
                         "path": "/report/operation/customer-invite-detail",
                         "icon": "fa fa-circle-o",
-                        "index": "6-2-6"
+                        "index": "12-2-6"
                     },
                     {
                         "navTitle": "Conversion Statistics",
                         "path": "/report/operation/conversion-statistics",
                         "icon": "fa fa-circle-o",
-                        "index": "6-2-7"
+                        "index": "12-2-7"
                     },
                     {
                         "navTitle": "Review Efficiency",
                         "path": "/report/operation/review-efficiency",
                         "icon": "fa fa-circle-o",
-                        "index": "6-2-8"
+                        "index": "12-2-8"
                     },
                     {
                         "navTitle": "Review History",
                         "path": "/report/operation/review-history",
                         "icon": "fa fa-circle-o",
-                        "index": "6-2-9"
+                        "index": "12-2-9"
                     },
                     {
                         "navTitle": "Review Monitor",
                         "path": "/report/operation/review-monitor",
                         "icon": "fa fa-circle-o",
-                        "index": "6-2-10"
+                        "index": "12-2-10"
                     },
                     {
                         "navTitle": "Feedback Summary",
                         "path": "/report/operation/feedback-summary",
                         "icon": "fa fa-circle-o",
-                        "index": "6-2-11"
+                        "index": "12-2-11"
                     }
                 ]
             },
@@ -379,7 +470,7 @@
                 "path": "/report",
                 "hasThreeNav": false,
                 "icon": "fa fa-table",
-                "index": "6-3"
+                "index": "12-3"
             }
             
         ]

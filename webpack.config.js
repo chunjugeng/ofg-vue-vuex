@@ -3,13 +3,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 // const babelRunTime = require('babel-runtime');
 const pkg = require('./package.json');
 const port = pkg.dev.port;
 const argv = require('yargs').argv;
 const isProd = argv.mode === 'production';
 const isDev = !isProd;
-
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const RootSrc = './src';
 const dist = getPath('./dist');
@@ -20,12 +22,11 @@ function getPath(_path) {
 
 const config = {
     mode: argv.mode,
-    devtool: isDev ? 'source-map': false,
-    entry: [
-        'babel-polyfill',
-        getPath('./src/app.js'), 
-        
-    ],
+    devtool: isDev ? 'cheap-source-map': false,
+    entry: {
+        vendor: ['vue', 'vuex', 'vue-router', 'axios'],
+        app: ['babel-polyfill', getPath('./src/app.js')]
+    },
     output: {
         path: dist,
         chunkFilename: '[name].[chunkhash].js',
@@ -67,9 +68,7 @@ const config = {
                     {loader: 'sass-loader'}
 
                 ]
-
             },
-
             {
                 test: /\.(png|jpeg|jpg|gif)$/,
                 use: {
@@ -110,20 +109,50 @@ const config = {
     },
     optimization: {
         splitChunks: {
+            chunks: 'all',
 			cacheGroups: {
-            }
+				// app: {
+                //     minChunks: 2,
+                //     name: 'app',
+                //     chunks: 'initial',
+                //     priority: 10,
+                //     reuseExistingChunk: true,
+                //     enforce: true
+                // },
+				// vendor: {
+                //     minChunks: 2,
+				// 	name: 'vendor',
+				// 	test: /[\\/]node_modules[\\/]/,
+				// 	chunks: 'initial',
+				// 	priority: 10
+                // },
+                // runtimeChunk: {
+                //     name: 'runtime',
+                //     minChunks: 2,
+                //     chunks: 'initial'
+                // }
+			}
         }
     },
     plugins: [
+        new CleanWebpackPlugin([dist]),
         new HtmlWebpackPlugin({
             filename: path.resolve(__dirname, 'dist/index.html'),
             template: path.resolve(__dirname, './src/layout/template.html'),
-            inject: 'body',
-            hash: true
+            inject: true,
+            hash: true,
+            favicon: path.resolve('favicon.ico'),
+            // chunks: ['app', 'vendor', 'common'],
+            minify: {
+                removeComments: isProd,
+                collapseWhitespace: isProd,
+                minifyJS: isProd
+            }
         }),
+        
         new MiniCssExtractPlugin({
-            filename: '[name].css',
-            chunkFilename: '[name].css'
+            filename: '[name].[hash].css',
+            chunkFilename: '[name].[hash].css'
         }),
         new VueLoaderPlugin()
     ],
@@ -137,17 +166,22 @@ const config = {
         }
     }
 };
-
-
-config.devServer = {
-    disableHostCheck: true,
-	contentBase: dist,
-	host: '0.0.0.0',
-	port: pkg.dev.port,
-	hot: false,
-	inline: true,
-    useLocalIp: true,
-    proxy: pkg.proxy
-};
+if (isDev) {
+    config.devServer = {
+        disableHostCheck: true,
+        contentBase: dist,
+        host: '0.0.0.0',
+        port: pkg.dev.port,
+        hot: false,
+        inline: true,
+        useLocalIp: true,
+        proxy: pkg.proxy
+    };
+} else {
+    config.plugins.push(
+        new OptimizeCSSAssetsPlugin(),
+        // new BundleAnalyzerPlugin()
+    );
+}
 
 module.exports = config;

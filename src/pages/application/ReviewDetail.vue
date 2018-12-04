@@ -124,6 +124,15 @@
                 </div>
             </tabs-slot>
         </div>
+        <div class="additional-info boxcon">
+            <h3>Additional Info</h3>
+            <tabs-slot class="paddingLR10" :data="[{title: 'Phone Location Record', type: 'location'}, {title: 'IMEI', type: 'IMEI'}]">
+                <div slot="location" ref="location" id="map" class="location" :style="{'height': '300px'}">location</div>
+                <div slot="IMEI">IMEI</div>
+            
+            </tabs-slot>
+        </div>
+        
 
         <div class="inner-review boxcon">
             <h3>Inner Review</h3>
@@ -166,10 +175,13 @@
         <div class="review-log boxcon">
             <h3>Review Log <a class="add-log-btn">Add Log</a></h3>
         </div>
+
+        <alert-msg  :msg="alertMsg"/>
     </div>
 </template>
 <script>
     import TabsSlot from '~/common/TabsSlot.vue';
+    import AlertMsg from '~/common/AlertMsg';
     export default {
         data() {
             return {
@@ -200,13 +212,36 @@
                         title: 'Video Info',
                         type: 'Video'
                     }
-                ]
+                ],
+                alertMsg: 'test alert msg'
             }
         },
         methods: {
+            load_map() {
+                let script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyArT2uqlw7umWBY8pN1AoWPFkCSTnZzbvM&callback=initMap";
+                document.body.appendChild(script);
+            }
+        },
+        mounted() {
+                this.load_map();
+                const that = this;
+                window.initMap = function() {
+                    console.log(that.$refs.location,'that.$refs.location')
+                    var map = new google.maps.Map(that.$refs.location, {
+                        center: {lat: -34.397, lng: 150.644},
+                        zoom: 8
+                    });
+                    // var marker = new google.maps.Marker({
+                    //     position: {lat: -34.397, lng: 150.644},
+                    //     map: map
+                    // });
+                };
         },
         components: {
-            TabsSlot
+            TabsSlot,
+            AlertMsg
         }
     }
 </script>
@@ -263,6 +298,13 @@
                 }
             }
 
+            .additional-info {
+                & > div {
+                    .location {
+                        height: 300px;
+                    }
+                }
+            }
             img {
                 width: 60%;
                 

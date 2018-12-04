@@ -1,5 +1,5 @@
 <template>
-    <div class="page-content">
+    <div class="page-content customer">
         <div class="search">
             <h1 v-if="title">{{title}}</h1>
             <div>
@@ -46,6 +46,8 @@
                             <td>xxxxxx</td>
                             <td>{{item.validTime}}</td>
                             <td>{{item.modifyDate}}</td>
+                            <td>BASIC_REVIEW</td>
+                            <td>{{item.modifyDate | dateFormat(true)}}</td>
                                 
                         </tr>
                     </tbody>
@@ -124,7 +126,7 @@
         data() {
             return {
                 pageSize: 10,
-                allThead: ['Customer Id', 'Real Name', 'Mobile', 'Status', 'Register Time'],
+                allThead: ['Customer ID', 'Customer Mobile', 'Customer Name', 'Aadhaar Number', 'Pan Code', 'Customer Status', 'Register Time'],
                 smsThead: ['Id', 'Chanel', 'Mobile', 'Code', 'Status', 'Create Time', 'Trigger'],
                 mobile: ['Name', 'Email', 'Mobile', 'Last Update Time'],
             }
@@ -174,3 +176,16 @@
         
     }
 </script>
+<style lang="scss">
+    .customer {
+        .table-content {
+            table {
+                th, td {
+                    white-space: normal;
+                }
+            }
+        }
+    }
+    
+</style>
+    
